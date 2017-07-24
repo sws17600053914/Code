@@ -43,8 +43,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-
-
         btn_home = (RadioButton) findViewById(R.id.radio_home);
         btn_pandalive = (RadioButton) findViewById(R.id.radio_pandalive);
         btn_roll = (RadioButton) findViewById(R.id.radio_rollrollvideo);
