@@ -36,10 +36,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
+        //锄禾日当午，汗滴禾下土
+        //锄禾日当午，汗滴禾下土
 
-    }
+}
+
 
     @Override
     protected void initView() {

@@ -19,12 +19,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.myapplication.R;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
 import com.zhy.android.percent.support.PercentLinearLayout;
 import com.zhy.android.percent.support.PercentRelativeLayout;
 
@@ -58,6 +63,8 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
     private AudioManager am;
     private VolumeReceiver receiver;
     private String path;
+    private LinearLayout linearLayout_qq;
+    private UMShareListener umShareListener;
 
 
     @Override
@@ -98,7 +105,50 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         },4000,4000);
     }
     private void initView() {
+        View inflate = LayoutInflater.from(BroadDetail_TopActivity.this).inflate(R.layout.popupwindow_broaddetails, null);
+        linearLayout_qq = (LinearLayout) inflate.findViewById(R.id.linearlayout_QQ);
 
+        linearLayout_qq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                UMImage image = new UMImage(BroadDetail_TopActivity.this, R.mipmap.ic_launcher);//资源文件
+                UMImage thumb =  new UMImage(BroadDetail_TopActivity.this,R.mipmap.ic_launcher);
+                image.setThumb(thumb);
+                new ShareAction(BroadDetail_TopActivity.this).setPlatform(SHARE_MEDIA.QQ)
+                        .withMedia(image)
+                        .setCallback(umShareListener)
+                        .share();
+            }
+        });
+        //分享开始的回调
+        //分享开始的回调
+        umShareListener = new UMShareListener() {
+            @Override
+            public void onStart(SHARE_MEDIA platform) {
+                //分享开始的回调
+            }
+            @Override
+            public void onResult(SHARE_MEDIA platform) {
+
+
+                Toast.makeText(BroadDetail_TopActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onError(SHARE_MEDIA platform, Throwable t) {
+                Toast.makeText(BroadDetail_TopActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+                if(t!=null){
+
+                }
+            }
+
+            @Override
+            public void onCancel(SHARE_MEDIA platform) {
+                Toast.makeText(BroadDetail_TopActivity.this,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+            }
+        };
         top = (PercentRelativeLayout) findViewById(R.id.top);
         down = (PercentLinearLayout) findViewById(R.id.down);
         image_fanhui = (ImageView) findViewById(R.id.image_fanhui);
@@ -161,9 +211,7 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         down_animation_end = AnimationUtils.loadAnimation(this, R.anim.down_translate_end);
         down_animation_end.setDuration(500);
         down_animation_end.setFillAfter(true);
-
         initListener();
-
         progressBar_yinliang();
     }
     //通过SeekBar设置系统音量
@@ -212,16 +260,12 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
             }
         }
     }
-
     private void initListener() {
-
         //返回图标监听
         image_fanhui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
-
             }
         });
         //收藏图标的监听
@@ -233,19 +277,14 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
                     state_shouchang =false;
 //                    Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT).show();
                     Toast toast =Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT);
-
                     toast.setGravity(Gravity.CENTER,0,0);
-
                     toast.show();
                 }else{
                     image_shouchang.setImageResource(R.drawable.collect_no);
                     state_shouchang =true;
                     Toast toast =Toast.makeText(BroadDetail_TopActivity.this, "已取消收藏", Toast.LENGTH_SHORT);
-
                     toast.setGravity(Gravity.CENTER,0,0);
-
                     toast.show();
-
                 }
             }
         });
@@ -265,13 +304,11 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         });
         //分享监听
         image_fenxiang.setOnClickListener(new View.OnClickListener() {
-
             private PopupWindow popupWindow;
-
             @Override
             public void onClick(View v) {
-
                 View inflate = LayoutInflater.from(BroadDetail_TopActivity.this).inflate(R.layout.popupwindow_broaddetails, null);
+                linearLayout_qq = (LinearLayout) inflate.findViewById(R.id.linearlayout_QQ);
                 View inflate2 = LayoutInflater.from(BroadDetail_TopActivity.this).inflate(R.layout.activity_broad_details_top, null);
                 popupWindow = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
                 popupWindow.showAtLocation(inflate2, Gravity.HORIZONTAL_GRAVITY_MASK,0,0);
@@ -282,7 +319,6 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
                         if (popupWindow != null){
                             popupWindow.dismiss();
                         }
-
                     }
                 });
             }
@@ -298,45 +334,23 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
-
     protected void initWebView_top() {
-
-
         Intent intent = getIntent();
-
         path = intent.getStringExtra("url_top");
-
         videoview_top = (VideoView) findViewById(R.id.videoview_top);
-
-//        videoview_top.setVideoURI(Uri.parse("http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/17/3d92fae34dc14b2492de15d5dd122ac8_h264200000nero_aac16.mp4"));
-
-//        videoview_top.setBackgroundResource(R.drawable._no_img);
-
         videoview_top.setVideoURI(Uri.parse(path));
-
         MediaController controller = new MediaController(this);
-
         int currentPosition = (int) videoview_top.getCurrentPosition();
-
         progressBar_jindu.setMax(currentPosition);
-
         videoview_top.setMediaController(controller);
-
         Toast.makeText(this, ""+controller, Toast.LENGTH_SHORT).show();
-
         controller.setMediaPlayer(videoview_top);
-
         controller.setVisibility(View.INVISIBLE);
-
         videoview_top.setMediaController(controller);
-
         videoview_top.requestFocus();
-
         videoview_top.start();   //开始播放
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
@@ -346,8 +360,6 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
                     down.startAnimation(down_animation_start);
                     state = false;
                 }else {
-
-
                     top.setVisibility(View.VISIBLE);
                     down.setVisibility(View.VISIBLE);
                     top.startAnimation(top_animation_end);
@@ -358,7 +370,6 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         }
         return true;
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

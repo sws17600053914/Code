@@ -51,7 +51,7 @@ public class LiveChinaFragmentsAdapter extends RecyclerView.Adapter<LiveChinaFra
 
         viewHolder.livechinaTitle.setText("[正在直播]" + datas.get(position).getTitle());
         viewHolder.livechinaContent.setText(datas.get(position).getBrief());
-        Glide.with(MyApp.mContext).load(datas.get(position).getImage()).into(viewHolder.livechinaImage);
+        Glide.with(MyApp.mBaseLastFragment.getActivity()).load(datas.get(position).getImage()).into(viewHolder.livechinaImage);
 
         viewHolder.livechinaPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class LiveChinaFragmentsAdapter extends RecyclerView.Adapter<LiveChinaFra
                     public void onSuccess(China_bean china_bean) {
                         Intent intent = new Intent(context, BroadDetail_TopActivity.class);
                         intent.putExtra("url_top", china_bean.getFlv_url().getFlv2());
-                        MyApp.mContext.startActivity(intent);
+                        MyApp.mBaseLastFragment.startActivity(intent);
                     }
 
                     @Override
