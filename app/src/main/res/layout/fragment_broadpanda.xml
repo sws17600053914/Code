@@ -1,0 +1,45 @@
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.admin.myapplication.module.home.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#1D539D">
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="熊猫播报"
+            android:textColor="#ffffff"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/image_persion"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/person_sign"
+            app:layout_heightPercent="8%w"
+            app:layout_widthPercent="8%w" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/listview_broad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="93%"
+        app:layout_widthPercent="100%">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+</com.zhy.android.percent.support.PercentLinearLayout>

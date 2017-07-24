@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:layout_widthPercent="100%w"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/zxczxcas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="精彩一刻"
+            android:textColor="#1D539D" />
+
+        <TextView
+            android:id="@+id/fdkghfughs22"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_below="@+id/zxczxcas"
+            android:layout_marginTop="15dp"
+            android:background="#e6e6e6" />
+        <com.example.admin.myapplication.module.home.MyGridView
+            android:id="@+id/home_gridview2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/fdkghfughs22"
+            android:numColumns="2"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:layout_margin="6dp"
+            android:gravity="center"
+            android:stretchMode="columnWidth"
+            >
+        </com.example.admin.myapplication.module.home.MyGridView>
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+</com.zhy.android.percent.support.PercentLinearLayout>

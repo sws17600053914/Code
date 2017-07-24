@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textbule">#3565a6</color>
+    <color name="background">#e6ebef</color>
+
+    <color name="baise">#fff</color>
+    <color name="huise">#d1d0d0</color>
+    <color name="share_it_background">#e6ebef</color>
+    <color name="touminglan">#50425af2</color>
+    <color name="touminglanadd">#7d85b3</color>
+    <color name="colorwhite">#ffffff</color>
+
+</resources>

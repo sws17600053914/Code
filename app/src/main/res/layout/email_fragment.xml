@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:text="邮箱注册需要激活后才能登录"
+        android:textColor="@color/textbule"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w" />
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%h"
+        app:layout_widthPercent="87%w"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/info_et"
+            android:hint="账号：请输入邮箱"
+            app:layout_heightPercent="100%h"
+            app:layout_widthPercent="100%w" />
+
+        <ImageView
+            android:id="@+id/email_gray"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="5%w"
+            app:layout_widthPercent="5%w"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/delete_gray" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <TextView
+        android:id="@+id/email_email"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="#ea2000"
+        android:layout_marginLeft="25dp"
+        android:text=""
+        />
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%h"
+        app:layout_widthPercent="87%w"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/email_pass"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/info_et"
+            android:hint="请输入密码"
+            app:layout_heightPercent="100%h"
+            app:layout_widthPercent="100%w" />
+
+        <ImageView
+            android:id="@+id/email_pass_gray"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="5%w"
+            app:layout_widthPercent="5%w"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/delete_gray" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <TextView
+        android:id="@+id/email_tsmm"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="#ea2000"
+        android:layout_marginLeft="25dp"
+        android:text=""
+        />
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%h"
+        app:layout_widthPercent="87%w"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/sure_pass"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/info_et"
+            android:hint="请确认密码"
+            app:layout_heightPercent="100%h"
+            app:layout_widthPercent="100%w" />
+
+        <ImageView
+            android:id="@+id/sure_pass_gray"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="5%w"
+            app:layout_widthPercent="5%w"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/delete_gray" />
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+
+    <TextView
+        android:id="@+id/email_surepass"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="#ea2000"
+
+        android:layout_marginLeft="25dp"
+        android:text=""
+        />
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:orientation="horizontal"
+        app:layout_heightPercent="10%h"
+        app:layout_widthPercent="100%w">
+        <com.zhy.android.percent.support.PercentRelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="90%h"
+            app:layout_widthPercent="56%w"
+            android:background="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="25dp"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:id="@+id/email_yanzhang"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/info_et"
+                android:hint="请输入收到的验证码"
+                app:layout_heightPercent="100%h"
+                app:layout_widthPercent="100%w"
+
+                />
+            <ImageView
+                android:id="@+id/email_yanzhang_gray"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_heightPercent="5%w"
+                app:layout_widthPercent="5%w"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/delete_gray" />
+        </com.zhy.android.percent.support.PercentRelativeLayout>
+
+        <Button
+            android:id="@+id/email_but"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="获取验证码"
+            android:textColor="#ffffff"
+            app:layout_heightPercent="90%h"
+            app:layout_widthPercent="30%w" />
+    </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <TextView
+        android:id="@+id/email_tpyz"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="#ea2000"
+        android:layout_marginLeft="25dp"
+        android:text=""
+        />
+    <CheckBox
+        android:id="@+id/email_treaty"
+        style="@style/CustomCheckBoxTheme"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+
+        android:text="我已阅读并同意《央视网网络服务使用协议》"
+        app:layout_heightPercent="8%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <TextView
+        android:id="@+id/email_gouxuan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="5%h"
+        app:layout_widthPercent="90%w"
+        android:textColor="#ea2000"
+
+        android:layout_marginLeft="25dp"
+        android:text=""
+        />
+    <Button
+        android:id="@+id/email_register"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_heightPercent="12%w"
+        app:layout_widthPercent="90%w"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_btn"
+        android:text="注册"
+        android:textColor="#ffffff"
+        />
+</com.zhy.android.percent.support.PercentLinearLayout>

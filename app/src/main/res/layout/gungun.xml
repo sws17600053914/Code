@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.android.percent.support.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:background="#ffffff"
+        app:layout_widthPercent="100%w"
+
+        >
+
+        <TextView
+            android:id="@+id/jyjyyg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="滚滚视频"
+            android:textColor="#1D539D" />
+
+        <TextView
+            android:id="@+id/rthrtgff"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_below="@+id/jyjyyg"
+            android:layout_marginTop="15dp"
+            android:background="#e6e6e6" />
+<!-- app:layout_heightPercent="60%h"
+            app:layout_widthPercent="100%w"-->
+        <ListView
+            android:id="@+id/gungun_listview"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+
+            android:layout_below="@+id/rthrtgff"></ListView>
+    </com.zhy.android.percent.support.PercentRelativeLayout>
+
+</com.zhy.android.percent.support.PercentLinearLayout>

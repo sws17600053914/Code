@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.myapplication.view.MainActivity">
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:id="@+id/linear_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_home"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="7dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_home"
+                android:gravity="center"
+                android:text="首页" />
+
+            <RadioButton
+                android:id="@+id/radio_pandalive"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="7dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_pandalive"
+                android:gravity="center"
+                android:text="熊猫直播" />
+
+            <RadioButton
+                android:id="@+id/radio_rollrollvideo"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="7dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_rollroll"
+                android:gravity="center"
+                android:text="滚滚视频" />
+
+            <RadioButton
+                android:id="@+id/radio_pandabroad"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="7dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_pandabroad"
+                android:gravity="center"
+                android:text="熊猫播报" />
+
+            <RadioButton
+                android:id="@+id/radio_livechina"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:paddingTop="7dp"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/selector_livechina"
+                android:gravity="center"
+                android:text="直播中国" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linear_main">
+
+    </FrameLayout>
+
+</RelativeLayout>
