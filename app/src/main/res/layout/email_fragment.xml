@@ -169,7 +169,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/info_et"
-                android:hint="请输入收到的验证码"
+                android:hint="请输入图片验证码"
                 app:layout_heightPercent="100%h"
                 app:layout_widthPercent="100%w"
 
@@ -187,16 +187,16 @@
                 android:background="@drawable/delete_gray" />
         </com.zhy.android.percent.support.PercentRelativeLayout>
 
-        <Button
+        <ImageView
             android:id="@+id/email_but"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="15dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="获取验证码"
+            android:background="@color/huise"
+            android:text=""
             android:textColor="#ffffff"
             app:layout_heightPercent="90%h"
-            app:layout_widthPercent="30%w" />
+            app:layout_widthPercent="28%w" />
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <TextView

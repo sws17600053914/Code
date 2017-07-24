@@ -11,9 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
-import com.example.admin.myapplication.global.MyApp;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.module.home.China_Adapter;
 import com.example.admin.myapplication.module.home.HomeGridView2_Adapter;

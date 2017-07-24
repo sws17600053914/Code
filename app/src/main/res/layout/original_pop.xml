@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/baise">
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_heightPercent="15%h"
-        app:layout_widthPercent="87%w"
+        app:layout_widthPercent="100%w"
         android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
@@ -18,7 +19,7 @@
         <RadioGroup
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_heightPercent="25%w"
+            app:layout_heightPercent="30%w"
             app:layout_widthPercent="100%w"
             android:orientation="horizontal"
             android:background="#ffffff"
@@ -37,9 +38,9 @@
                 android:button="@null"
                 android:drawableTop="@drawable/fcb"
                 android:gravity="center"
-                android:text="" />
+                android:text="Facebook" />
             <RadioButton
-                android:id="@+id/login_QQ"
+                android:id="@+id/twitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,9 +48,9 @@
                 android:button="@null"
                 android:drawableTop="@drawable/twitter"
                 android:gravity="center"
-                android:text="" />
+                android:text="Twitter" />
             <RadioButton
-                android:id="@+id/radio_home"
+                android:id="@+id/sinawebo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -57,8 +58,61 @@
                 android:button="@null"
                 android:drawableTop="@drawable/sinawebo"
                 android:gravity="center"
-                android:text="" />
+                android:text="微博" />
         </RadioGroup>
     </com.zhy.android.percent.support.PercentLinearLayout>
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="15%h"
+        app:layout_widthPercent="100%w"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
 
+        android:orientation="horizontal"
+
+        >
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="30%w"
+            app:layout_widthPercent="60%w"
+            android:orientation="horizontal"
+            android:background="#ffffff"
+            android:weightSum="2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="15dp"
+
+            android:layout_marginLeft="20dp">
+            <RadioButton
+                android:id="@+id/wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/wechat"
+                android:gravity="center"
+                android:text="微信" />
+            <RadioButton
+                android:id="@+id/moments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/moments"
+                android:gravity="center"
+                android:text="朋友圈" />
+
+        </RadioGroup>
+    </com.zhy.android.percent.support.PercentLinearLayout>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="17%w"
+        app:layout_widthPercent="100%w"
+        android:background="@color/background"
+        android:text="取  消"/>
 </com.zhy.android.percent.support.PercentLinearLayout>

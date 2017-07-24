@@ -1,6 +1,7 @@
 package com.example.admin.myapplication.module.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -12,13 +13,14 @@ import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.module.home.items.HomeAdapter;
+import com.example.admin.myapplication.module.interact.Share_it_Activity;
+import com.example.admin.myapplication.module.person.PersonActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
@@ -94,6 +96,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     protected void initView(View view) {
         Log.e("TAG", "initView: ");
         xRecyclerView = (XRecyclerView) view.findViewById(R.id.home_xrecyclerview);
+        view.findViewById(R.id.home_gerenzhongxin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.home_sign).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getActivity(), Share_it_Activity.class);
+                startActivity(intent1);
+            }
+        });
+
     }
 
     @Override

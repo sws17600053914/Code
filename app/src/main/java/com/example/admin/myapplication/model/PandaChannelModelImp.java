@@ -13,6 +13,8 @@ import com.example.admin.myapplication.model.bean.PandaBroadTwoBean;
 import com.example.admin.myapplication.model.bean.PandaLiveBean;
 import com.example.admin.myapplication.model.bean.RollRollVideoBean;
 import com.example.admin.myapplication.model.bean.WonderfulBean;
+import com.example.admin.myapplication.module.person.PersonBean;
+import com.example.admin.myapplication.module.person.dengl.LoginBean;
 import com.example.admin.myapplication.network.HttpFactory;
 import com.example.admin.myapplication.network.MyCallBack;
 
@@ -128,5 +130,24 @@ public class PandaChannelModelImp implements PandaChannelModel {
 //        pamrams.put("", "");
 //        HttpFactory.create().get(Urls.ORIGINALNEWS, pamrams, callBack);
 //    }
+@Override
+public void getLoginData(String username, String password, String service, String from,MyCallBack<LoginBean> callBack) {
+    Map<String, String> params = new HashMap<String, String>();
+    params.put("username", username);
+    params.put("password", password);
+    params.put("service", service);
+    params.put("from",from);
+    HttpFactory.create().get(Urls.LOGIN, params, callBack);
+}
+
+    @Override
+    public void getPersonData(String client, String method, String userid, MyCallBack<PersonBean.ContentEntity> callBack) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("client", client);
+        params.put("method",method);
+        params.put("userid",userid);
+        HttpFactory.create().post(Urls.PERSON, params, callBack);
+    }
+
 
 }

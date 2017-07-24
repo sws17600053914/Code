@@ -239,6 +239,7 @@
         android:layout_gravity="center"
         android:background="#22000000"
         />
+
     <com.zhy.android.percent.support.PercentRelativeLayout
         android:id="@+id/goodreputation"
         android:layout_width="0dp"
@@ -266,6 +267,7 @@
             app:layout_widthPercent="10%w"
             android:layout_centerVertical="true"/>
     </com.zhy.android.percent.support.PercentRelativeLayout>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"

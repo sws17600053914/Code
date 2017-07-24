@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.module.home.mybean.Bobao_bean;
 import com.example.admin.myapplication.network.HttpUtils;
 import com.example.admin.myapplication.network.MyCallBack;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 

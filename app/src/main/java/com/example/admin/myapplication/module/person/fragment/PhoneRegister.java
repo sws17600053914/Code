@@ -1,7 +1,6 @@
 package com.example.admin.myapplication.module.person.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
 import com.example.admin.myapplication.utils.Code;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,28 +72,32 @@ public class PhoneRegister extends BaseFragment {
     Button phoneRegister;
     Unbinder unbinder;
     private Code code;
+    private URL url;
 
     @Override
     protected void initData() {
+        String user_Phone = phone.getText().toString().trim();
+        String user_Picture = tupianYanzhang.getText().toString().trim();
+        String user_Shortmessage = duanxinYanzhang.getText().toString().trim();
+        String user_Pass = registerPass.getText().toString().trim();
 
-    }
 
+
+
+        }
+//
     @Override
     protected void initView(View view) {
-        code = new Code();
-        ypyz.setImageBitmap(code.getInstance().createBitmap());
 
-        System.out.println("验证码："+ code.getInstance().getCode());
-        Log.e("TAG", "验证码："+ code.getInstance().getCode() );
-        ypyz.setOnClickListener(new View.OnClickListener() {
+        try {
+            url = new URL("http://reg.cntv.cn/simple/verificationCode.action");
+            Glide.with(getActivity()).load(url).into(ypyz);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
-            public void onClick(View v) {
 
-                ypyz.setImageBitmap(code.getInstance().createBitmap());
-                Log.e("TAG", "验证码："+ code.getInstance().getCode() );
-            }
-        });
-    }
+}
 
     @Override
     public int getFragmentLayoutId() {
@@ -111,7 +119,7 @@ public class PhoneRegister extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.gray, R.id.tupian_gray, R.id.duanxin_gray, R.id.phone_but, R.id.register_pass_gray, R.id.phone_treaty, R.id.phone_register})
+    @OnClick({R.id.gray, R.id.tupian_gray, R.id.duanxin_gray, R.id.phone_but, R.id.register_pass_gray, R.id.phone_treaty, R.id.phone_register,R.id.ypyz})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.gray:
@@ -127,6 +135,12 @@ public class PhoneRegister extends BaseFragment {
             case R.id.phone_treaty:
                 break;
             case R.id.phone_register:
+                break;
+            case R.id.ypyz:
+                Toast.makeText(getActivity(), "图片", Toast.LENGTH_SHORT).show();
+
+//                      ypyz.setImageResource(R.mipmap.ic_launcher);
+                      Glide.with(getActivity()).load("http://reg.cntv.cn/simple/verificationCode.action").into(ypyz);
                 break;
         }
     }

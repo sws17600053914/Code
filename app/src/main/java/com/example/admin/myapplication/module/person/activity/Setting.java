@@ -1,14 +1,18 @@
 package com.example.admin.myapplication.module.person.activity;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseActivity;
@@ -30,6 +34,8 @@ public class Setting extends BaseActivity implements View.OnClickListener{
     private TextView rubbish;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private String appPkg;
+    private String marketPkg;
 
     @Override
     protected void initView() {
@@ -129,7 +135,36 @@ public class Setting extends BaseActivity implements View.OnClickListener{
                 }
                 editor.commit();
                 break;
+            case R.id.goodreputation:
+                appPkg = "熊猫频道";
+                marketPkg = "";
+//            launchAppDetail(appPkg, marketPkg);
+                try {
+                    Intent intent9 = new Intent(Intent.ACTION_VIEW);
+                    //参数是应用程序的包名
+                    intent9.setData(Uri.parse("market://details?id=" + "熊猫频道"));
+                    //通过隐式意图激活activity
+                    startActivity(intent9);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(Setting.this, "抱歉，你没有安装应用市场", Toast.LENGTH_LONG);
+                }
+                break;
 
+        }
+    }
+    public void launchAppDetail(String appPkg, String marketPkg) {
+        try {
+            if (TextUtils.isEmpty(appPkg)) return;
+
+            Uri uri = Uri.parse("market://details?id=" + appPkg);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            if (!TextUtils.isEmpty(marketPkg)) {
+                intent.setPackage(marketPkg);
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

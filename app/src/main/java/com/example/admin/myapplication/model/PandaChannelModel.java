@@ -12,6 +12,8 @@ import com.example.admin.myapplication.model.bean.PandaBroadTwoBean;
 import com.example.admin.myapplication.model.bean.PandaLiveBean;
 import com.example.admin.myapplication.model.bean.RollRollVideoBean;
 import com.example.admin.myapplication.model.bean.WonderfulBean;
+import com.example.admin.myapplication.module.person.PersonBean;
+import com.example.admin.myapplication.module.person.dengl.LoginBean;
 import com.example.admin.myapplication.network.MyCallBack;
 
 /**
@@ -104,5 +106,18 @@ public interface PandaChannelModel {
      * @param callBack
      */
     void getWonderfulData(MyCallBack<WonderfulBean> callBack);
+    /**
+     * 用户登录(请求URL中有参数的)
+     *
+     * @param callBack
+     */
+    void getLoginData(String username, String password, String service, String from, MyCallBack<LoginBean> callBack);
+
+    /*
+    * 个人中心
+    * @param callBack
+    *
+    * */
+    void getPersonData(String client,String method,String userid, MyCallBack<PersonBean.ContentEntity> callBack);
 
 }

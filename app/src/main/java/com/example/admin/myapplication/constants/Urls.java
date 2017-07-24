@@ -31,5 +31,8 @@ public class Urls {
     public static final String BADALING = BASEURL + "liebiao/badaling/index.json";
     //精彩一刻
     public static final String ORIGINALNEWS = "http://www.ipanda.com/kehuduan/PAGE14501773768112092/index.json";
-
+    //    用户登录
+    public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
+    //    个人信息
+    public static final String PERSON="http://my.cntv.cn/intf/napi/api.php";
 }

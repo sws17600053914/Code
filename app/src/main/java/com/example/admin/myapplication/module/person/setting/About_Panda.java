@@ -6,8 +6,6 @@ import android.widget.ImageView;
 
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseActivity;
-
-
 /**
  * 代码虐我千百遍，我待代码如初恋
  *

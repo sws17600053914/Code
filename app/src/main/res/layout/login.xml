@@ -59,30 +59,33 @@
     android:layout_marginTop="15dp"
     android:layout_marginLeft="20dp"
     android:text="使用社交账号登录到熊猫频道"/>
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="15%h"
-        app:layout_widthPercent="87%w"
-        android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
+        android:background="#ffffff"
         android:orientation="horizontal"
+        app:layout_heightPercent="15%h"
+        app:layout_widthPercent="87%w"
 
         >
+
         <RadioGroup
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_heightPercent="25%w"
-            app:layout_widthPercent="100%w"
-            android:orientation="horizontal"
-            android:background="#ffffff"
-            android:weightSum="3"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp">
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_heightPercent="25%w"
+            app:layout_widthPercent="100%w">
+
             <RadioButton
                 android:id="@+id/login_weixin"
                 android:layout_width="wrap_content"
@@ -93,6 +96,7 @@
                 android:drawableTop="@drawable/login_weixin"
                 android:gravity="center"
                 android:text="微信" />
+
             <RadioButton
                 android:id="@+id/login_QQ"
                 android:layout_width="wrap_content"
@@ -103,8 +107,9 @@
                 android:drawableTop="@drawable/login_qq"
                 android:gravity="center"
                 android:text="QQ" />
+
             <RadioButton
-                android:id="@+id/radio_home"
+                android:id="@+id/radio_sina"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -113,7 +118,7 @@
                 android:drawableTop="@drawable/login_sina"
                 android:gravity="center"
                 android:text="微博" />
-       </RadioGroup>
+        </RadioGroup>
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <TextView

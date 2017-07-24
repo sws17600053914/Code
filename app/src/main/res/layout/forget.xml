@@ -131,18 +131,19 @@
         </com.zhy.android.percent.support.PercentRelativeLayout>
 
 
-        <Button
+        <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
             android:text="获取验证码"
-            android:textColor="#ffffff"
+            android:background="@color/huise"
+            android:id="@+id/forget_ypyz"
             app:layout_heightPercent="85%h"
             android:layout_gravity="center_vertical"
             app:layout_widthPercent="30%w" />
     </com.zhy.android.percent.support.PercentLinearLayout>
     <TextView
-        android:id="@+id/forget_tpyz"
+        android:id="@+id/text_tistpyz"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_heightPercent="5%h"
@@ -160,6 +161,7 @@
         app:layout_heightPercent="10%h"
         app:layout_widthPercent="100%w">
         <com.zhy.android.percent.support.PercentRelativeLayout
+
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_heightPercent="90%h"
@@ -196,7 +198,7 @@
 
 
         <Button
-            android:id="@+id/phone_but"
+            android:id="@+id/forget_yanzbut"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"

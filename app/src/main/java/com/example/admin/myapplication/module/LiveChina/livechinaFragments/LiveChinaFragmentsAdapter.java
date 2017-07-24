@@ -1,6 +1,6 @@
 package com.example.admin.myapplication.module.LiveChina.livechinaFragments;
 
-  import android.content.Context;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
