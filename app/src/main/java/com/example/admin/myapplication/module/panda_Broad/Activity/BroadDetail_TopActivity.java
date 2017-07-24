@@ -346,6 +346,8 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
                     down.startAnimation(down_animation_start);
                     state = false;
                 }else {
+
+
                     top.setVisibility(View.VISIBLE);
                     down.setVisibility(View.VISIBLE);
                     top.startAnimation(top_animation_end);
