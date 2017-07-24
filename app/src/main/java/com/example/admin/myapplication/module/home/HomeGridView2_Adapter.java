@@ -11,10 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
-import com.example.admin.myapplication.model.bean.HomeDataBean;
+import com.example.admin.myapplication.module.home.mybean.JingCai_bean;
 
 import java.util.ArrayList;
-
 
 
 /**
@@ -24,8 +23,8 @@ import java.util.ArrayList;
 public class HomeGridView2_Adapter extends BaseAdapter{
 
     Context context;
-    ArrayList<HomeDataBean.DataBean.BigImgBean> list;
-    public HomeGridView2_Adapter(Context context, ArrayList<HomeDataBean.DataBean.BigImgBean> list) {
+    ArrayList<JingCai_bean.ListBean> list;
+    public HomeGridView2_Adapter(Context context, ArrayList<JingCai_bean.ListBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -53,7 +52,8 @@ public class HomeGridView2_Adapter extends BaseAdapter{
             convertView = LayoutInflater.from(context).inflate(R.layout.jingcai_item_item,null);
             holder.img = (ImageView) convertView.findViewById(R.id.item_img);
             holder.text = (TextView) convertView.findViewById(R.id.item_text);
-//            holder.shijian = (TextView) convertView.findViewById(R.id.item2_shijian);
+            holder.shijian = (TextView) convertView.findViewById(R.id.item_item_shijian);
+            holder.shijian2 = (TextView) convertView.findViewById(R.id.shipingshijian);
             convertView.setTag(holder);
         }else{
             holder = (Holder) convertView.getTag();
@@ -61,6 +61,8 @@ public class HomeGridView2_Adapter extends BaseAdapter{
 
             Glide.with(context).load(list.get(position).getImage()).into(holder.img);
             holder.text.setText(list.get(position).getTitle());
+            holder.shijian.setText(list.get(position).getDaytime());
+            holder.shijian2.setText(list.get(position).getVideoLength());
         if(list.get(position).getTitle().equals("")){
             holder.text.setText("推荐下载");
         }
@@ -71,5 +73,6 @@ public class HomeGridView2_Adapter extends BaseAdapter{
         ImageView img;
         TextView text;
         TextView shijian;
+        TextView shijian2;
     }
 }

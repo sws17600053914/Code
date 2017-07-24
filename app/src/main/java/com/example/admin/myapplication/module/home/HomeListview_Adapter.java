@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
+import com.example.admin.myapplication.module.home.mybean.GunGun_bean;
 
 import java.util.ArrayList;
+
 
 /**
  * Created by C on 2017/7/19.
@@ -59,8 +61,10 @@ public class HomeListview_Adapter extends BaseAdapter{
         }
 
             Glide.with(context).load(list.get(position).getImage()).into(holder.img);
-            holder.text.setText(list.get(position).getTitle()+list.get(position).getBrief());
+            holder.text.setText(list.get(position).getTitle());
             holder.shijian2.setText(list.get(position).getVideoLength());
+            holder.shijian.setText(list.get(position).getDaytime());
+
         if(list.get(position).getTitle().equals("")){
             holder.text.setText("推荐下载");
         }

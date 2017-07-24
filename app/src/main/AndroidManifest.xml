@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin.myapplication">
 
-    <uses-sdk android:minSdkVersion="4"/>
+    <uses-sdk android:minSdkVersion="4" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,6 +23,7 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".global.MyApp"
         android:allowBackup="true"
@@ -37,8 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".module.panda_Broad.Activity.BroadDetailsActivity" />
+        <activity android:name=".module.panda_Broad.Activity.BroadDetailsActivity" />
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
@@ -57,18 +58,52 @@
         <activity android:name=".module.interact.Share_it_item_Activity" />
         <activity android:name=".module.person.activity.Collect" />
         <activity android:name=".module.LiveChina.LiveChinaAddActivity" />
+
+
+        <activity
+            android:name=".module.home.jiecao.Lunbo_Viod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape">
+
+
+        </activity>
+        <activity android:name=".module.home.JiecaoViod"
+            android:screenOrientation="landscape"
+            />
+        <activity android:name=".module.home.jiecao.BobaoTwo"></activity>
+        <activity
+            android:name=".module.home.jiecao.Jincai_Viod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".module.home.jiecao.GunGun_Viod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".module.home.jiecao.China_Viod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".module.home.jiecao.JiecaoViod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".module.home.jiecao.XiuGang_Viod"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".module.panda_Broad.Activity.BroadDetail_TopActivity"
-            android:screenOrientation="landscape"
-            ></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
@@ -78,7 +113,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <meta-data android:name="UMENG_APPKEY" android:value="5972f46d1c5dd06c64000109" ></meta-data>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5972f46d1c5dd06c64000109"></meta-data>
 
 
     </application>

@@ -5,8 +5,7 @@
     android:layout_height="wrap_content">
     <com.zhy.android.percent.support.PercentRelativeLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_heightPercent="46%h"
+        android:layout_height="wrap_content"
         app:layout_widthPercent="100%w"
         android:background="#ffffff"
         android:layout_marginLeft="4dp"
@@ -32,16 +31,14 @@
         <com.example.admin.myapplication.module.home.MyGridView
             android:id="@+id/home_gridview1"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/rthrtg"
             android:numColumns="3"
             android:horizontalSpacing="10dp"
             android:verticalSpacing="10dp"
             android:layout_margin="6dp"
             android:gravity="center"
-            android:stretchMode="columnWidth"
-            >
+            android:stretchMode="columnWidth">
         </com.example.admin.myapplication.module.home.MyGridView>
-
     </com.zhy.android.percent.support.PercentRelativeLayout>
 </com.zhy.android.percent.support.PercentLinearLayout>

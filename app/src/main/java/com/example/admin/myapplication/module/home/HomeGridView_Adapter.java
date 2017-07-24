@@ -15,8 +15,6 @@ import com.example.admin.myapplication.model.bean.HomeDataBean;
 
 import java.util.ArrayList;
 
-
-
 /**
  * Created by C on 2017/7/19.
  */

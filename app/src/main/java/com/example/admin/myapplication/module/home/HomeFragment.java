@@ -1,29 +1,27 @@
 package com.example.admin.myapplication.module.home;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.module.home.items.HomeAdapter;
-import com.example.admin.myapplication.module.interact.Share_it_Activity;
-import com.example.admin.myapplication.module.person.PersonActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
+
 
 /**
  * 爱生活，爱代码
@@ -38,9 +36,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     ArrayList<HomeDataBean.DataBean.PandaliveBean.ListBean> list = new ArrayList<>();
     //TODO mHomePresenter未初始化
     private HomeContract.HomePresenter mHomePresenter;
-    private Banner banner;
     private XRecyclerView xRecyclerView;
-    private ImageView image_geren,image_sign;
 
 
     @Override
@@ -61,12 +57,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
+                adapter.notifyDataSetChanged();
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
 
-                        getActivity().runOnUiThread(new Runnable() {
+                        getActivity().runOnUiThread(
+                                new Runnable() {
                             @Override
                             public void run() {
                                 xRecyclerView.refreshComplete();
@@ -96,32 +94,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     protected void initView(View view) {
         Log.e("TAG", "initView: ");
         xRecyclerView = (XRecyclerView) view.findViewById(R.id.home_xrecyclerview);
-
-        image_geren= (ImageView) view.findViewById(R.id.home_gerenzhongxin);
-
-        image_sign = (ImageView) view.findViewById(R.id.home_sign);
-
-        image_geren.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), PersonActivity.class);
-
-                startActivity(intent);
-
-            }
-        });
-
-        image_sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), Share_it_Activity.class);
-
-                startActivity(intent);
-
-            }
-        });
     }
 
     @Override
@@ -140,16 +112,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+//        unbinder.unbind();
     }
 
-//    @OnClick({R.id.home_biaoti11, R.id.home_biaoti22})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.home_biaoti11:
-//                break;
-//            case R.id.home_biaoti22:
-//                break;
-//        }
-//    }
+    @OnClick({R.id.home_biaoti11, R.id.home_biaoti22})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.home_biaoti11:
+                break;
+            case R.id.home_biaoti22:
+                break;
+        }
+    }
 }

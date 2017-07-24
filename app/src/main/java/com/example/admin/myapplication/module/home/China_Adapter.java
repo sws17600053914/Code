@@ -15,6 +15,7 @@ import com.example.admin.myapplication.model.bean.HomeDataBean;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by C on 2017/7/19.
  */
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 public class China_Adapter extends BaseAdapter{
 
     Context context;
-    ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanXX> list;
-    public China_Adapter(Context context, ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanXX> list) {
+    ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanX> list;
+    public China_Adapter(Context context, ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanX> list) {
         this.context = context;
         this.list = list;
     }

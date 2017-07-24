@@ -11,19 +11,25 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.global.MyApp;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.module.home.China_Adapter;
-import com.example.admin.myapplication.module.home.GunGun_bean;
 import com.example.admin.myapplication.module.home.HomeGridView2_Adapter;
 import com.example.admin.myapplication.module.home.HomeGridView_Adapter;
 import com.example.admin.myapplication.module.home.HomeListview_Adapter;
+import com.example.admin.myapplication.module.home.Home_Url;
 import com.example.admin.myapplication.module.home.JiecaoViod;
 import com.example.admin.myapplication.module.home.MyGridView;
+import com.example.admin.myapplication.module.home.jiecao.BobaoTwo;
+import com.example.admin.myapplication.module.home.jiecao.China_Viod;
+import com.example.admin.myapplication.module.home.jiecao.GunGun_Viod;
+import com.example.admin.myapplication.module.home.jiecao.Jincai_Viod;
+import com.example.admin.myapplication.module.home.jiecao.Lunbo_Viod;
+import com.example.admin.myapplication.module.home.jiecao.XiuGang_Viod;
+import com.example.admin.myapplication.module.home.mybean.GunGun_bean;
+import com.example.admin.myapplication.module.home.mybean.JingCai_bean;
 import com.example.admin.myapplication.network.HttpUtils;
 import com.example.admin.myapplication.network.MyCallBack;
 import com.example.admin.myapplication.utils.GlideImageLoadar;
@@ -34,7 +40,6 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 /**
@@ -49,12 +54,6 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
     private final int JINGCAI_VP = 3;
     private final int GUNGUN_VP = 4;
     private final int CHINA_VP = 5;
-    private VpHolder vpHolder;
-    private BobaoHolder bobaoHolder;
-    private ZhiboHoler zhiboHoler;
-    private JingcaiHolder jingcaiHolder;
-    private GunGunHolder gunGunHolder;
-    private ChinaHolder chinaHolder;
     private Banner banner;
     private Context context;
     private HomeDataBean bean;
@@ -62,9 +61,7 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
     private TextView biaoti1, neirong1, biaoti2, neirong2;
     private MyGridView myGridView, myGridView2, myGridView3;
     private ListView listView;
-    private GunGun_bean news;
     private Boolean aBoolean = true;
-    ArrayList<HomeDataBean.DataBean.PandaliveBean.ListBean> list = new ArrayList<>();
 
     public HomeAdapter(Context context, HomeDataBean bean) {
         this.context = context;
@@ -75,20 +72,24 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
     public XRecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         if (viewType == TYPE_VP) {
             View view = LayoutInflater.from(context).inflate(R.layout.lunbo_item, parent, false);
-            vpHolder = new VpHolder(view);
+            VpHolder  vpHolder = new VpHolder(view);
             banner = (Banner) view.findViewById(R.id.mybanner);
             banner.setOnBannerListener(new OnBannerListener() {
 
                 @Override
                 public void OnBannerClick(int position) {
-                    Toast.makeText(context, "轮播点击事件" + position, Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(context, Lunbo_Viod.class);
+                    String[] page = {Home_Url.LUNBOOUT, Home_Url.LUNBOTWO, Home_Url.LUNBOTHREE, Home_Url.LUNBOFOUR};
+                    intent2.putExtra("position", page[position]);
+                    context.startActivity(intent2);
+
                 }
             });
             return vpHolder;
         }
-            if (viewType == BOBAO_VP) {
+        if (viewType == BOBAO_VP) {
             final View view = LayoutInflater.from(context).inflate(R.layout.bobao_item, parent, false);
-            bobaoHolder = new BobaoHolder(view);
+            BobaoHolder bobaoHolder = new BobaoHolder(view);
             img = (ImageView) view.findViewById(R.id.home_img);
             biaoti1 = (TextView) view.findViewById(R.id.home_biaoti);
             neirong1 = (TextView) view.findViewById(R.id.home_biaoti11);
@@ -97,15 +98,15 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
             neirong1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MyApp.mContext, JiecaoViod.class);
-                    MyApp.mContext.startActivity(intent);
+                    Intent intent = new Intent(context, JiecaoViod.class);
+                    context.startActivity(intent);
                 }
             });
             neirong2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MyApp.mContext, JiecaoViod.class);
-                    MyApp.mContext.startActivity(intent);
+                    Intent intent = new Intent(context, BobaoTwo.class);
+                    context.startActivity(intent);
                 }
             });
             return bobaoHolder;
@@ -113,33 +114,64 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
 
         if (viewType == ZHIBO_VP) {
             View view = LayoutInflater.from(context).inflate(R.layout.zhibo_item, parent, false);
-            zhiboHoler = new ZhiboHoler(view);
+            ZhiboHoler zhiboHoler = new ZhiboHoler(view);
             myGridView = (MyGridView) view.findViewById(R.id.home_gridview1);
             myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    position = position + 1;
-                    Toast.makeText(context, "直播频道" + position, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, XiuGang_Viod.class);
+                    String[] page = {Home_Url.ZHIBO1, Home_Url.ZHIBO2, Home_Url.ZHIBO3, Home_Url.ZHIBO4, Home_Url.ZHIBO5
+                            , Home_Url.ZHIBO6, Home_Url.ZHIBO7, Home_Url.ZHIBO8, Home_Url.ZHIBO9};
+                    intent.putExtra("position5", page[position]);
+                    context.startActivity(intent);
                 }
             });
             return zhiboHoler;
         }
         if (viewType == JINGCAI_VP) {
             View view = LayoutInflater.from(context).inflate(R.layout.jingcai_item, parent, false);
-            jingcaiHolder = new JingcaiHolder(view);
+            JingcaiHolder  jingcaiHolder = new JingcaiHolder(view);
             myGridView2 = (MyGridView) view.findViewById(R.id.home_gridview2);
+            myGridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(context, Jincai_Viod.class);
+                    String[] page = {Home_Url.JINGCAI1, Home_Url.JINGCAI2, Home_Url.JINGCAI3, Home_Url.JINGCAI4};
+                    intent.putExtra("position2", page[position]);
+                    context.startActivity(intent);
+                }
+            });
             return jingcaiHolder;
         }
         if (viewType == GUNGUN_VP) {
             View view = LayoutInflater.from(context).inflate(R.layout.gungun, parent, false);
-            gunGunHolder = new GunGunHolder(view);
+            GunGunHolder    gunGunHolder = new GunGunHolder(view);
             listView = (ListView) view.findViewById(R.id.gungun_listview);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(context, GunGun_Viod.class);
+                    String[] page = {Home_Url.GUNGUN1, Home_Url.GUNGUN2, Home_Url.GUNGUN3, Home_Url.GUNGUN4, Home_Url.GUNGUN5};
+                    intent.putExtra("position3", page[position]);
+                    context.startActivity(intent);
+                }
+            });
             return gunGunHolder;
         }
         if (viewType == CHINA_VP) {
             View view = LayoutInflater.from(context).inflate(R.layout.china, parent, false);
-            chinaHolder = new ChinaHolder(view);
+            ChinaHolder chinaHolder = new ChinaHolder(view);
             myGridView3 = (MyGridView) view.findViewById(R.id.home_gridview3);
+            myGridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(context, China_Viod.class);
+                    String[] page = {Home_Url.CHINA1, Home_Url.CHINA2, Home_Url.CHINA3, Home_Url.CHINA4, Home_Url.CHINA5,
+                            Home_Url.CHINA6, Home_Url.CHINA7, Home_Url.CHINA8, Home_Url.CHINA9,};
+                    intent.putExtra("position4", page[position]);
+                    context.startActivity(intent);
+                }
+            });
             return chinaHolder;
         }
         return null;
@@ -150,16 +182,16 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
         //轮播
         if (position == TYPE_VP) {
             List<String> imaglist = new ArrayList<>();
-            imaglist.add(bean.getData().getArea().getListscroll().get(0).getImage());
-            imaglist.add(bean.getData().getArea().getListscroll().get(1).getImage());
-            imaglist.add(bean.getData().getArea().getListscroll().get(2).getImage());
-            imaglist.add(bean.getData().getArea().getListscroll().get(3).getImage());
+            imaglist.add(bean.getData().getBigImg().get(0).getImage());
+            imaglist.add(bean.getData().getBigImg().get(1).getImage());
+            imaglist.add(bean.getData().getBigImg().get(2).getImage());
+            imaglist.add(bean.getData().getBigImg().get(3).getImage());
             Log.e("图片", imaglist.toString());
             List<String> textlist = new ArrayList<>();
-            textlist.add(bean.getData().getArea().getListscroll().get(0).getTitle());
-            textlist.add(bean.getData().getArea().getListscroll().get(1).getTitle());
-            textlist.add(bean.getData().getArea().getListscroll().get(2).getTitle());
-            textlist.add(bean.getData().getArea().getListscroll().get(3).getTitle());
+            textlist.add(bean.getData().getBigImg().get(0).getTitle());
+            textlist.add(bean.getData().getBigImg().get(1).getTitle());
+            textlist.add(bean.getData().getBigImg().get(2).getTitle());
+            textlist.add(bean.getData().getBigImg().get(3).getTitle());
             banner.update(imaglist, textlist);
             banner.isAutoPlay(true);
             banner.setImageLoader(new GlideImageLoadar());
@@ -170,43 +202,60 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
         }
         // 熊猫播报
         if (position == BOBAO_VP) {
+
+
             Glide.with(context).load(bean.getData().getPandaeye().getPandaeyelogo()).into(img);
             biaoti1.setText(bean.getData().getPandaeye().getItems().get(0).getBrief());
-            neirong1.setText(bean.getData().getPandaeye().getItems().get(0).getTitle());
             biaoti2.setText(bean.getData().getPandaeye().getItems().get(1).getBrief());
+            neirong1.setText(bean.getData().getPandaeye().getItems().get(0).getTitle());
             neirong2.setText(bean.getData().getPandaeye().getItems().get(1).getTitle());
         }
         //直播秀场
         if (aBoolean) {
             if (position == ZHIBO_VP) {
                 Log.e("TAGG", "加载了");
+                ArrayList<HomeDataBean.DataBean.PandaliveBean.ListBean> list = new ArrayList<>();
                 list.addAll(bean.getData().getPandalive().getList());
                 HomeGridView_Adapter adapter = new HomeGridView_Adapter(context, list);
+                Log.e("TTTT", "onBindViewHolder: " + list.size());
                 myGridView.setAdapter(adapter);
                 aBoolean = false;
             }
         }
         //精彩一刻
         if (position == JINGCAI_VP) {
-            ArrayList<HomeDataBean.DataBean.BigImgBean> list2 = new ArrayList<>();
-            list2.addAll(bean.getData().getBigImg());
-            HomeGridView2_Adapter adapter = new HomeGridView2_Adapter(context, list2);
-            myGridView2.setAdapter(adapter);
+
+            HttpUtils.getInstance().get("http://www.ipanda.com/kehuduan/shipinliebieye/jingcaiyike/index.json ", null, new MyCallBack<JingCai_bean>() {
+                @Override
+                public void onSuccess(JingCai_bean jingCai_bean) {
+                    ArrayList<JingCai_bean.ListBean> list2 = new ArrayList<>();
+                    list2.addAll(jingCai_bean.getList());
+                    HomeGridView2_Adapter adapter = new HomeGridView2_Adapter(context, list2);
+                    myGridView2.setAdapter(adapter);
+                }
+
+                @Override
+                public void onFaile(String msg) {
+
+                }
+            });
         }
         //滚滚视频
         if (position == GUNGUN_VP) {
 
-            HttpUtils.getInstance().get("http://www.ipanda.com/kehuduan/video/index.json", null, new MyCallBack<GunGun_bean>() {
+            HttpUtils.getInstance().get("http://www.ipanda.com/kehuduan/shipinliebieye/video/index.json ", null, new MyCallBack<GunGun_bean>() {
                 @Override
                 public void onSuccess(GunGun_bean gunGun_bean) {
 
                     final ArrayList<GunGun_bean.ListBean> list3 = new ArrayList<>();
-                    for (int i = 0; i < gunGun_bean.getList().size(); i++) {
+                    if(list3.equals("5")){
+                        Log.e("TAAG", "滚滚视频集合长度dddddddd: " + list3.size());
+                    }else {
                         list3.addAll(gunGun_bean.getList());
+                        HomeListview_Adapter adapter = new HomeListview_Adapter(context, list3);
+                        Log.e("TAAG", "滚滚视频集合长度: " + list3.size());
+                        listView.setAdapter(adapter);
                     }
-                    HomeListview_Adapter adapter = new HomeListview_Adapter(context, list3);
-                    listView.setAdapter(adapter);
-
                 }
 
                 @Override
@@ -218,7 +267,7 @@ public class HomeAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
         }
         //直播中国
         if (position == CHINA_VP) {
-            ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanXX> list4 = new ArrayList<>();
+            ArrayList<HomeDataBean.DataBean.ChinaliveBean.ListBeanX> list4 = new ArrayList<>();
             list4.addAll(bean.getData().getChinalive().getList());
             China_Adapter adapter = new China_Adapter(context, list4);
             myGridView3.setAdapter(adapter);

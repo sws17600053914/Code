@@ -1,13 +1,20 @@
 package com.example.admin.myapplication.module.home;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
+import com.example.admin.myapplication.module.home.mybean.Bobao_bean;
+import com.example.admin.myapplication.network.HttpUtils;
+import com.example.admin.myapplication.network.MyCallBack;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.widget.VideoView;
 
 
 /**
@@ -20,17 +27,28 @@ public class JiecaoViod extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jiecaovido);
-        JCVideoPlayer.releaseAllVideos();
-        JCVideoPlayer jcVideoPlayerStandard = (JCVideoPlayer) findViewById(R.id.videocontroller1);
-        jcVideoPlayerStandard.setUp("http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4","熊猫直播");
-        Glide.with(this).load(R.drawable._no_img).into(jcVideoPlayerStandard.ivThumb);
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JCVideoPlayer.releaseAllVideos();
-    }
 
 
+
+        HttpUtils.getInstance().get(Home_Url.BOBAOOUT, null, new MyCallBack<Bobao_bean>() {
+            @Override
+            public void onSuccess(Bobao_bean bobao_bean) {
+
+                String s =bobao_bean.getVideo().getChapters().get(0).getUrl();
+                VideoView videoview_top = (VideoView) findViewById(R.id.videocontroller1);
+                videoview_top.setVideoURI(Uri.parse(s));
+                MediaController controller = new MediaController(JiecaoViod.this);
+                videoview_top.setMediaController(controller);
+                videoview_top.setMediaController(controller);
+                videoview_top.requestFocus();
+                videoview_top.start();   //开始播放
+            }
+
+            @Override
+            public void onFaile(String msg) {
+                Toast.makeText(JiecaoViod.this, "加载失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }
