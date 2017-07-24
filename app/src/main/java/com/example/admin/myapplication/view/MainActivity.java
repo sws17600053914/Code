@@ -38,6 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initView();
         //锄禾日当午，汗滴禾下土
+        //锄禾日当午，汗滴禾下土
 
 }
 
