@@ -14,6 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.model.bean.MultiBean;
 
+
 import java.util.List;
 
 /**
@@ -30,7 +31,6 @@ public class GridViewAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        Log.i("=========", "适配器长度: "+list.size());
         return list.size();
     }
 
@@ -41,7 +41,6 @@ public class GridViewAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        Log.i("=========", "适配器ID: "+position);
         return position;
     }
 

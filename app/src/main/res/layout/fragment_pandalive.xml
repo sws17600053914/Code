@@ -1,54 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.zhy.android.percent.support.PercentLinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_pandalive"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%" />
 
-    <com.zhy.android.percent.support.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#1D539D">
+    <com.example.admin.myapplication.utils.NoScrollViewPager
+        android:id="@+id/vp_pandalive"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="90%"
+        app:layout_widthPercent="100%"/>
 
-        <TextView
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="熊猫直播"
-            android:textColor="#ffffff"
-            android:textSize="15dp" />
-
-        <ImageView
-            android:id="@+id/pandaLive_gerenzhongxin"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/person_sign"
-            app:layout_heightPercent="8%w"
-            app:layout_widthPercent="8%w" />
-
-    </com.zhy.android.percent.support.PercentRelativeLayout>
-
-    <com.zhy.android.percent.support.PercentLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_pandalive"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_heightPercent="10%"
-            app:layout_widthPercent="100%" />
-
-        <com.example.admin.myapplication.utils.NoScrollViewPager
-            android:id="@+id/vp_pandalive"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_heightPercent="90%"
-            app:layout_widthPercent="100%" />
-
-    </com.zhy.android.percent.support.PercentLinearLayout>
+</com.zhy.android.percent.support.PercentLinearLayout>
 </LinearLayout>

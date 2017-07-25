@@ -9,8 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.model.bean.WonderfulBean;
+
 
 import java.util.List;
 
@@ -20,12 +22,12 @@ import java.util.List;
 
 public class MomentAdapter extends RecyclerView.Adapter<MomentAdapter.MyViewHolder> implements View.OnClickListener{
     private Context context;
-    private List<WonderfulBean.ListBean> list;
+    private List<WonderfulBean.VideoBean> list;
     private MyViewHolder mvh;
     private SetMyClick  setMyClick;
-    public MomentAdapter(Context context, List<WonderfulBean.ListBean> list) {
+    public MomentAdapter(Context context, List<WonderfulBean.VideoBean> mList) {
         this.context=context;
-        this.list=list;
+        this.list=mList;
     }
 
     public void setSetMyClick(SetMyClick setMyClick) {
@@ -43,9 +45,14 @@ public class MomentAdapter extends RecyclerView.Adapter<MomentAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.itemView.setTag(position);
-        Glide.with(context).load(list.get(position).getImage()).into(holder.iv);
-        holder.title.setText(list.get(position).getTitle());
-        holder.time.setText(list.get(position).getId());
+
+        Glide.with(context)
+                .load(list.get(position).getImg())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.iv);
+        holder.title.setText(list.get(position).getT());
+        holder.time.setText(list.get(position).getPtime());
+        holder.tv_videolength.setText(list.get(position).getLen());
     }
 
     @Override
@@ -63,11 +70,13 @@ public class MomentAdapter extends RecyclerView.Adapter<MomentAdapter.MyViewHold
         private ImageView iv;
         private TextView title;
         private TextView time;
+        private TextView tv_videolength;
         public MyViewHolder(View itemView) {
             super(itemView);
             iv= (ImageView) itemView.findViewById(R.id.iv);
             title= (TextView) itemView.findViewById(R.id.tv_title);
             time= (TextView) itemView.findViewById(R.id.tv_time);
+            tv_videolength= (TextView) itemView.findViewById(R.id.tv_videolength);
         }
     }
     public interface SetMyClick{

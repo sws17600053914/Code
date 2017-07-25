@@ -6,6 +6,8 @@ import com.example.admin.myapplication.model.bean.BaDaLingBean;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.model.bean.HomeVideoBean;
 import com.example.admin.myapplication.model.bean.LiveChinaBean;
+import com.example.admin.myapplication.model.bean.LiveTitleBean;
+import com.example.admin.myapplication.model.bean.LiveURLBean;
 import com.example.admin.myapplication.model.bean.MultiBean;
 import com.example.admin.myapplication.model.bean.OriginalBean;
 import com.example.admin.myapplication.model.bean.PandaBroadBean;
@@ -112,14 +114,14 @@ public class PandaChannelModelImp implements PandaChannelModel {
         HttpFactory.create().get(url, null, callBack);
     }
 
-    @Override
-    public void getWonderfulData(MyCallBack<WonderfulBean> callBack) {
-//        Map<String, String> pamrams = new HashMap<String, String>();
-//        pamrams.put("", "");
-//        pamrams.put("", "");
-//        pamrams.put("", "");
-        HttpFactory.create().get(Urls.ORIGINALNEWS, null, callBack);
-    }
+//    @Override
+//    public void getWonderfulData(MyCallBack<WonderfulBean> callBack) {
+////        Map<String, String> pamrams = new HashMap<String, String>();
+////        pamrams.put("", "");
+////        pamrams.put("", "");
+////        pamrams.put("", "");
+//        HttpFactory.create().get(Urls.ORIGINALNEWS, null, callBack);
+//    }
 
 //    //TODO  可能有参数
 //    @Override
@@ -147,6 +149,23 @@ public void getLoginData(String username, String password, String service, Strin
         params.put("method",method);
         params.put("userid",userid);
         HttpFactory.create().post(Urls.PERSON, params, callBack);
+    }
+
+    //TODO  可能有参数
+    @Override
+    public void getWonderfulData(Map<String, String> pamrams,MyCallBack<WonderfulBean> callBack) {
+
+        HttpFactory.create().get(Urls.ORIGINALNEWS, pamrams, callBack);
+    }
+
+    @Override
+    public void getLiveTitleData(MyCallBack<LiveTitleBean> callBack) {
+        HttpFactory.create().get(Urls.LIVETITLE, null, callBack);
+    }
+
+    @Override
+    public void getLiveUrlData(Map<String, String> pamrams, MyCallBack<LiveURLBean> callBack) {
+        HttpFactory.create().get(Urls.LIVEURL, pamrams, callBack);
     }
 
 

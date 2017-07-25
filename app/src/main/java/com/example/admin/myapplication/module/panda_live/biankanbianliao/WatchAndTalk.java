@@ -2,6 +2,7 @@ package com.example.admin.myapplication.module.panda_live.biankanbianliao;
 
 import android.view.View;
 
+
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
 
@@ -25,4 +26,5 @@ public class WatchAndTalk extends BaseFragment {
     public int getFragmentLayoutId() {
         return R.layout.watchandtalk;
     }
+
 }

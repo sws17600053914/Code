@@ -5,23 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
-import com.example.admin.myapplication.global.MyApp;
 import com.example.admin.myapplication.model.bean.PandaLiveBean;
 import com.example.admin.myapplication.module.panda_live.biankanbianliao.WatchAndTalk;
 import com.example.admin.myapplication.module.panda_live.duojiaodu.DuoJiaoDu;
 import com.example.admin.myapplication.utils.NoScrollViewPager;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.widget.VideoView;
 
 
 /**
@@ -30,7 +37,8 @@ import java.util.ArrayList;
 
 public class Live extends BaseFragment implements PandaLiveContract.PandaLiveView,View.OnClickListener{
     private PandaLiveContract.PandaLivePresenter mPandaLivePresenter;
-    private ImageView up,iv_show_more;
+    private ImageView iv_show_more;
+    private VideoView videoView;
     private TextView title,introduce;
     private LinearLayout linearLayout;
     private TabLayout tab;
@@ -45,10 +53,16 @@ public class Live extends BaseFragment implements PandaLiveContract.PandaLiveVie
         @Override
         public void onReceive(Context context, Intent intent) {
             String stringExtra = intent.getStringExtra("title");
+            String liveUrl = intent.getStringExtra("liveUrl");
             title.setText(stringExtra);
+           // initVideo(liveUrl);
         }
     };
     IntentFilter ifs=new IntentFilter();
+    private TwoPageAdapter twoPageAdapter;
+    private WatchAndTalk watchAndTalk;
+    private DuoJiaoDu duoJiaoDu;
+
     @Override
     protected void initData() {
         mPandaLivePresenter = new PandaFragmentPresenter(this);
@@ -57,7 +71,7 @@ public class Live extends BaseFragment implements PandaLiveContract.PandaLiveVie
 
     @Override
     protected void initView(View view) {
-        up= (ImageView) view.findViewById(R.id.iv_live_up);
+        videoView= (VideoView) view.findViewById(R.id.iv_live_up);
         iv_show_more= (ImageView) view.findViewById(R.id.iv_show_more);
         title= (TextView) view.findViewById(R.id.title_live);
         introduce= (TextView) view.findViewById(R.id.tv_introduce);
@@ -66,13 +80,21 @@ public class Live extends BaseFragment implements PandaLiveContract.PandaLiveVie
         vp= (NoScrollViewPager) view.findViewById(R.id.vp_two);
         iv_show_more.setOnClickListener(this);
         ifs.addAction("com.com.com");
-        MyApp.mContext.registerReceiver(br,ifs);
+        getActivity().registerReceiver(br,ifs);
+        if (watchAndTalk==null && duoJiaoDu==null){
+            watchAndTalk = new WatchAndTalk();
+            duoJiaoDu = new DuoJiaoDu();
+            arrlist.add(duoJiaoDu);
+            arrlist.add(watchAndTalk);
+        }
     }
 
     @Override
     public int getFragmentLayoutId() {
         return R.layout.live;
     }
+
+
     @Override
     public void setPresenter(PandaLiveContract.PandaLivePresenter pandaLivePresenter) {
         mPandaLivePresenter = pandaLivePresenter;
@@ -88,20 +110,19 @@ public class Live extends BaseFragment implements PandaLiveContract.PandaLiveVie
 
         left=getTitleLeft(padaLiveBean);
         titles.add(left);
+
         right=getTitleRight(padaLiveBean);
         titles.add(right);
 
-        WatchAndTalk watchAndTalk = new WatchAndTalk();
-        DuoJiaoDu duoJiaoDu = new DuoJiaoDu();
-        arrlist.add(duoJiaoDu);
-        arrlist.add(watchAndTalk);
-        FragmentManager fm = MyApp.mContext.getSupportFragmentManager();
-        TwoPageAdapter twoPageAdapter = new TwoPageAdapter(fm, arrlist, titles);
+        FragmentManager fm = getFragmentManager();
+        // FragmentManager fm = getActivity().getSupportFragmentManager();
+        twoPageAdapter = new TwoPageAdapter(fm, arrlist, titles);
         vp.setAdapter(twoPageAdapter);
         tab.setupWithViewPager(vp);
         tab.setTabTextColors(Color.BLACK,Color.BLUE);
         tab.setSelectedTabIndicatorHeight(5);
         tab.setSelectedTabIndicatorColor(Color.BLUE);
+        twoPageAdapter.notifyDataSetChanged();
     }
 
     private String getIntroduce(PandaLiveBean padaLiveBean) {
@@ -143,6 +164,17 @@ public class Live extends BaseFragment implements PandaLiveContract.PandaLiveVie
     @Override
     public void onDestroy() {
         super.onDestroy();
-        MyApp.mContext.unregisterReceiver(br);
+        getActivity().unregisterReceiver(br);
+    }
+
+    private void initVideo(String url) {
+        videoView.setVideoURI(Uri.parse(url));
+        MediaController controller = new MediaController(getActivity());
+        videoView.setMediaController(controller);
+        controller.setMediaPlayer(videoView);
+        videoView.requestFocus();
+        controller.setVisibility(View.INVISIBLE);
+        videoView.setMediaController(controller);
+        videoView.start();   //开始播放
     }
 }

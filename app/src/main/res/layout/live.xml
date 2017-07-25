@@ -12,12 +12,11 @@
         app:layout_heightPercent="50%"
         app:layout_widthPercent="100%">
 
-        <ImageView
+        <io.vov.vitamio.widget.VideoView
             android:id="@+id/iv_live_up"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@color/colorAccent" />
+            android:layout_weight="1" />
 
         <RelativeLayout
             android:layout_width="match_parent"

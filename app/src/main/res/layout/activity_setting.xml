@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e6ebef"
-    android:orientation="vertical"
-    tools:context="com.example.administrator.panda_channel.module.person.activity.Setting">
+    android:orientation="vertical">
 
     <com.zhy.android.percent.support.PercentRelativeLayout
         android:layout_width="match_parent"

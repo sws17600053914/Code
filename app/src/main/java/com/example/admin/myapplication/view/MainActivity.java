@@ -14,6 +14,7 @@ import com.example.admin.myapplication.module.home.HomeFragment;
 import com.example.admin.myapplication.module.panda_Broad.BroadFragment;
 import com.example.admin.myapplication.module.panda_live.PandaLiveFragment;
 
+
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private HomeFragment homeFragment;
@@ -37,8 +38,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        //锄禾日当午，汗滴禾下土
-        //锄禾日当午，汗滴禾下土
 
 }
 

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.administrator.panda_channel.module.person.setting.User_Tickling">
+    android:orientation="vertical">
 
     <com.zhy.android.percent.support.PercentRelativeLayout
         android:layout_width="match_parent"

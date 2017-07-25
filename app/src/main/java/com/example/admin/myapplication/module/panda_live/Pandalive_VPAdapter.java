@@ -11,12 +11,12 @@ import java.util.ArrayList;
  */
 
 class Pandalive_VPAdapter extends FragmentPagerAdapter {
-    String[] sss={"直播","精彩一刻","当熊不让","超萌滚滚秀","熊猫档案","熊猫TOP榜"
-            ,"熊猫那些事儿","特别节目","原创新闻"};
     private ArrayList<Fragment> arrlist;
-    public Pandalive_VPAdapter(FragmentManager fm, ArrayList<Fragment> arrlist) {
+    private ArrayList<String> arr;
+    public Pandalive_VPAdapter(FragmentManager fm, ArrayList<Fragment> arrlist, ArrayList<String> arr) {
         super(fm);
         this.arrlist=arrlist;
+        this.arr=arr;
     }
 
     @Override
@@ -31,6 +31,6 @@ class Pandalive_VPAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return sss[position];
+        return arr.get(position);
     }
 }

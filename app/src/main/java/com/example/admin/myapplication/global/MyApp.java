@@ -8,6 +8,8 @@ import com.umeng.socialize.PlatformConfig;
 
 import java.util.ArrayList;
 
+import io.vov.vitamio.Vitamio;
+
 
 /**
  * 爱生活，爱代码
@@ -29,6 +31,7 @@ public class MyApp extends Application {
 
     @Override
     public void onCreate() {
+        Vitamio.isInitialized(this);
         super.onCreate();
 
         // QQ和Qzone appid + appkey

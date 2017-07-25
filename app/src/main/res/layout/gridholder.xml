@@ -3,15 +3,48 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
+<RelativeLayout
+    android:layout_width="130dp"
+    android:layout_height="70dp">
     <ImageView
         android:id="@+id/iv_grid"
         android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="3dp"
-        android:scaleType="fitCenter" />
-
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="1.5dp"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="20dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/default_time_view"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/home_hot_live_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical"
+                android:text="Live"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>
     <TextView
         android:id="@+id/tv_grid"
         android:layout_width="wrap_content"

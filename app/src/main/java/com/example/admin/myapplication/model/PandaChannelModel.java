@@ -5,6 +5,8 @@ import com.example.admin.myapplication.model.bean.BaDaLingBean;
 import com.example.admin.myapplication.model.bean.HomeDataBean;
 import com.example.admin.myapplication.model.bean.HomeVideoBean;
 import com.example.admin.myapplication.model.bean.LiveChinaBean;
+import com.example.admin.myapplication.model.bean.LiveTitleBean;
+import com.example.admin.myapplication.model.bean.LiveURLBean;
 import com.example.admin.myapplication.model.bean.MultiBean;
 import com.example.admin.myapplication.model.bean.OriginalBean;
 import com.example.admin.myapplication.model.bean.PandaBroadBean;
@@ -15,6 +17,8 @@ import com.example.admin.myapplication.model.bean.WonderfulBean;
 import com.example.admin.myapplication.module.person.PersonBean;
 import com.example.admin.myapplication.module.person.dengl.LoginBean;
 import com.example.admin.myapplication.network.MyCallBack;
+
+import java.util.Map;
 
 /**
  * 爱生活，爱代码
@@ -101,11 +105,11 @@ public interface PandaChannelModel {
     void getBaDaLingData(String url,MyCallBack<BaDaLingBean> callBack);
 
 
-    /**
-     * 获取精彩一刻数据
-     * @param callBack
-     */
-    void getWonderfulData(MyCallBack<WonderfulBean> callBack);
+//    /**
+//     * 获取精彩一刻数据
+//     * @param callBack
+//     */
+//    void getWonderfulData(MyCallBack<WonderfulBean> callBack);
     /**
      * 用户登录(请求URL中有参数的)
      *
@@ -119,5 +123,9 @@ public interface PandaChannelModel {
     *
     * */
     void getPersonData(String client,String method,String userid, MyCallBack<PersonBean.ContentEntity> callBack);
+    void getWonderfulData(Map<String,String> map, MyCallBack<WonderfulBean> callBack);
 
+    void getLiveTitleData(MyCallBack<LiveTitleBean> callBack);
+
+    void getLiveUrlData(Map<String,String> map,MyCallBack<LiveURLBean> callBack);
 }

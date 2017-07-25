@@ -196,7 +196,9 @@
 
         <activity android:name=".module.person.activity.MyInformation" />
         <activity android:name=".module.person.activity.UpDataName"></activity>
-
+        <activity
+            android:name=".utils.VideoPlayActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

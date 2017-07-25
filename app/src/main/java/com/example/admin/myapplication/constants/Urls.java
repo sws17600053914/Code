@@ -30,9 +30,15 @@ public class Urls {
     // 直播中国-八达岭
     public static final String BADALING = BASEURL + "liebiao/badaling/index.json";
     //精彩一刻
-    public static final String ORIGINALNEWS = "http://www.ipanda.com/kehuduan/PAGE14501773768112092/index.json";
+    public static final String ORIGINALNEWS = "http://api.cntv.cn/video/videolistById";
     //    用户登录
     public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
     //    个人信息
     public static final String PERSON="http://my.cntv.cn/intf/napi/api.php";
+
+    public static final String ROLLSHOW = "http://115.182.35.91/api/getVideoInfoForCBox.do";
+
+    public static final String LIVETITLE=BASEURL+"PAGE14501772263221982/index.json";
+
+    public static final String LIVEURL="http://vdn.live.cntv.cn/api2/live.do";
 }

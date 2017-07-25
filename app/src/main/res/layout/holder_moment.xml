@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:scaleType="centerCrop"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            />
 
         <com.zhy.android.percent.support.PercentLinearLayout
             android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
                 android:src="@drawable/play" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_videolength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
