@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rollitem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -14,34 +16,36 @@
 
         <com.zhy.android.percent.support.PercentRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_widthPercent="100%">
 
             <ImageView
-                android:id="@+id/roll_image"
+                android:id="@+id/rollitem_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:src="@drawable/personal_back_img" />
 
             <TextView
+                android:id="@+id/rollitem_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="熊猫TOP榜"
-                android:textColor="@color/white_fafaf8"
+                android:textColor="@color/colorwhite"
                 android:textSize="20dp" />
 
 
         </com.zhy.android.percent.support.PercentRelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <io.vov.vitamio.widget.VideoView
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/rollitem_jcvideo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_heightPercent="30%"
-        app:layout_widthPercent="100%"></io.vov.vitamio.widget.VideoView>
+        app:layout_widthPercent="100%"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
 
     <com.zhy.android.percent.support.PercentRelativeLayout
         android:layout_width="match_parent"
@@ -124,12 +128,12 @@
         android:layout_height="wrap_content"
         app:layout_heightPercent="10%">
 
-        <CheckBox
+        <ImageView
             android:id="@+id/rollitem_shoucheng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
-            android:button="@drawable/collect_no" />
+            android:src="@drawable/collect_no" />
 
         <ImageView
             android:id="@+id/rollitem_share"

@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class Share_it_item_Activity extends BaseActivity implements View.OnClickListener{
+public class Share_it_item_Activity extends BaseActivity implements View.OnClickListener {
 
 
     private RadioButton fac;
@@ -100,15 +100,15 @@ public class Share_it_item_Activity extends BaseActivity implements View.OnClick
         PopupWindow pop = new PopupWindow();
         View inflate = this.getLayoutInflater().inflate(R.layout.original_pop, null);
         pop.setContentView(inflate);
-        fac = (RadioButton)inflate.findViewById(R.id.fac);
+        fac = (RadioButton) inflate.findViewById(R.id.pop_fac);
         fac.setOnClickListener(this);
-        twitter = (RadioButton) inflate.findViewById(R.id.twitter);
+        twitter = (RadioButton) inflate.findViewById(R.id.pop_twitter);
         twitter.setOnClickListener(this);
-        sinawebo = (RadioButton) inflate.findViewById(R.id.sinawebo);
+        sinawebo = (RadioButton) inflate.findViewById(R.id.pop_sinawebo);
         sinawebo.setOnClickListener(this);
-        wechat = (RadioButton) inflate.findViewById(R.id.wechat);
+        wechat = (RadioButton) inflate.findViewById(R.id.pop_wechat);
         wechat.setOnClickListener(this);
-        moments = (RadioButton) inflate.findViewById(R.id.moments);
+        moments = (RadioButton) inflate.findViewById(R.id.pop_moments);
         moments.setOnClickListener(this);
         //设置PopupWindow弹出窗体的宽
         pop.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
@@ -136,20 +136,21 @@ public class Share_it_item_Activity extends BaseActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.fac:
+        switch (v.getId()) {
+            case R.id.pop_fac:
                 break;
-            case R.id.twitter:
+            case R.id.pop_twitter:
                 break;
-            case R.id.sinawebo:
+            case R.id.pop_sinawebo:
                 break;
-            case R.id.wechat:
+            case R.id.pop_wechat:
                 break;
-            case R.id.moments:
+            case R.id.pop_moments:
 
                 break;
         }
     }
+
     private void showShare() {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
@@ -157,7 +158,7 @@ public class Share_it_item_Activity extends BaseActivity implements View.OnClick
         // 分享时Notification的图标和文字  2.5.9以后的版本不     调用此方法
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle(getString(R.string.app_name)+title);
+        oks.setTitle(getString(R.string.app_name) + title);
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl(url);
         // text是分享文本，所有平台都需要这个字段

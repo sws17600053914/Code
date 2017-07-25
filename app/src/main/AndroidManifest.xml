@@ -58,6 +58,11 @@
         <activity android:name=".module.interact.Share_it_item_Activity" />
         <activity android:name=".module.person.activity.Collect" />
         <activity android:name=".module.LiveChina.LiveChinaAddActivity" />
+        <activity
+            android:name=".module.RollRoll_video.activity.RollActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape" />
+        <activity android:name=".module.RollRoll_video.activity.RollItemActivity" />
 
 
         <activity
@@ -67,9 +72,9 @@
 
 
         </activity>
-        <activity android:name=".module.home.JiecaoViod"
-            android:screenOrientation="landscape"
-            />
+        <activity
+            android:name=".module.home.JiecaoViod"
+            android:screenOrientation="landscape" />
         <activity android:name=".module.home.jiecao.BobaoTwo">
 
         </activity>
@@ -125,11 +130,13 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5972f46d1c5dd06c64000109">
 
         </meta-data>
+
         <activity
             android:name=".module.cn.sharesdk.demo.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -181,10 +188,10 @@
 
         <!--<activity android:name=".module.person.activity.Collect"/>-->
         <!--<activity-->
-            <!--android:name="com.umeng.qq.tencent.AssistActivity"-->
-            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+        <!--android:name="com.umeng.qq.tencent.AssistActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
 
 
         <activity android:name=".module.person.activity.MyInformation" />

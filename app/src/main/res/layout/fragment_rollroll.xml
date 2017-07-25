@@ -4,31 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.zhy.android.percent.support.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#1D539D">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="100%">
 
-        <TextView
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="滚滚视频"
-            android:textColor="#ffffff"
-            android:textSize="15dp" />
+        <com.zhy.android.percent.support.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/roll_person"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/person_sign"
-            app:layout_heightPercent="8%w"
-            app:layout_widthPercent="8%w" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="滚滚视频"
+                android:textColor="@color/colorwhite"
+                android:textSize="20dp" />
 
-    </com.zhy.android.percent.support.PercentRelativeLayout>
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:id="@+id/roll_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/personal_login_head" />
+        </com.zhy.android.percent.support.PercentRelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/roll_reycler"

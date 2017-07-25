@@ -3,6 +3,7 @@ package com.example.admin.myapplication.module.RollRoll_video;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,17 +11,21 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
+import com.example.admin.myapplication.model.bean.RollActivityBean;
 import com.example.admin.myapplication.model.bean.RollRollVideoBean;
 import com.example.admin.myapplication.module.RollRoll_video.activity.RollActivity;
 import com.example.admin.myapplication.module.RollRoll_video.activity.RollItemActivity;
 import com.example.admin.myapplication.module.RollRoll_video.adapter.RollAdapter;
+import com.example.admin.myapplication.module.panda_Broad.Activity.BroadDetail_TopActivity;
 import com.example.admin.myapplication.module.person.PersonActivity;
+import com.example.admin.myapplication.network.HttpUtils;
+import com.example.admin.myapplication.network.MyCallBack;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 
-
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 
 public class RollFragment extends BaseFragment implements RollContract.RollView {
@@ -31,7 +36,6 @@ public class RollFragment extends BaseFragment implements RollContract.RollView 
     private ArrayList<RollRollVideoBean.ListBean> strings = new ArrayList<>();
     private RollAdapter adapter;
     private ImageView imageView1;
-    private ImageView image;
 
     @Override
     public void setPresenter(RollContract.RollPresenter rollPresenter) {
@@ -91,10 +95,15 @@ public class RollFragment extends BaseFragment implements RollContract.RollView 
 
     @Override
     protected void initView(View view) {
-        image = (ImageView) view.findViewById(R.id.roll_person);
-
         imageView = (ImageView) view.findViewById(R.id.roll_image);
         xRecyclerView = (XRecyclerView) view.findViewById(R.id.roll_reycler);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -109,10 +118,32 @@ public class RollFragment extends BaseFragment implements RollContract.RollView 
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RollActivity.class);
-                intent.putExtra("url", resultData.getBigImg().get(0).getUrl());
-                intent.putExtra("title", resultData.getBigImg().get(0).getTitle());
-                startActivity(intent);
+
+//                intent.putExtra("title", resultData.getBigImg().get(0).getTitle());
+
+
+                String url = "http://115.182.35.91/api/getVideoInfoForCBox.do?pid=" + resultData.getBigImg().get(0).getPid();
+                HttpUtils.getInstance().get(url, null, new MyCallBack<RollActivityBean>() {
+                    @Override
+                    public void onSuccess(RollActivityBean rollActivityBean) {
+
+                      final String  urls = rollActivityBean.getVideo().getChapters().get(0).getUrl();
+                       getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getActivity(), BroadDetail_TopActivity.class);
+                                intent.putExtra("url_top", urls);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFaile(String msg) {
+
+                    }
+                });
+
             }
         });
         adapter.setOnClick(new RollAdapter.setOnClick() {
@@ -120,17 +151,8 @@ public class RollFragment extends BaseFragment implements RollContract.RollView 
             public void setClick(int position) {
                 Intent intent = new Intent(getActivity(), RollItemActivity.class);
                 intent.putExtra("id", resultData.getList().get(position).getId());
+                intent.putExtra("title", resultData.getList().get(position).getTitle());
                 startActivity(intent);
-            }
-        });
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), PersonActivity.class);
-
-                startActivity(intent);
-
             }
         });
     }

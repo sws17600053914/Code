@@ -12,7 +12,7 @@ public class Urls {
     //首页数据
     public static final String HOMEURLALL = "http://www.ipanda.com/kehuduan/shouye/index.json";
     //滚滚视频
-    public static final String ROLLVIDEO = BASEURL + "xmwh/index.json";
+    public static final String ROLLVIDEO = BASEURL + "video/index.json";
     //直播中国
     public static final String LIVECHINAURL = "http://www.ipanda.com/kehuduan/PAGE14501775094142282/index.json";
     //熊猫播报

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/baise">
+    android:background="@color/colorwhite"
+    android:orientation="vertical">
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="15%h"
-        app:layout_widthPercent="100%w"
-        android:background="#ffffff"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
+        android:background="#ffffff"
         android:orientation="horizontal"
+        app:layout_heightPercent="15%h"
+        app:layout_widthPercent="100%w">
 
-        >
         <RadioGroup
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_heightPercent="30%w"
-            app:layout_widthPercent="100%w"
-            android:orientation="horizontal"
-            android:background="#ffffff"
-            android:weightSum="3"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp">
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_heightPercent="30%w"
+            app:layout_widthPercent="100%w">
+
             <RadioButton
-                android:id="@+id/fac"
+                android:id="@+id/pop_fac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -39,8 +40,9 @@
                 android:drawableTop="@drawable/fcb"
                 android:gravity="center"
                 android:text="Facebook" />
+
             <RadioButton
-                android:id="@+id/twitter"
+                android:id="@+id/pop_twitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,8 +51,9 @@
                 android:drawableTop="@drawable/twitter"
                 android:gravity="center"
                 android:text="Twitter" />
+
             <RadioButton
-                android:id="@+id/sinawebo"
+                android:id="@+id/pop_sinawebo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,32 +64,35 @@
                 android:text="微博" />
         </RadioGroup>
     </com.zhy.android.percent.support.PercentLinearLayout>
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="15%h"
-        app:layout_widthPercent="100%w"
-        android:background="#ffffff"
         android:layout_gravity="center_horizontal"
-
+        android:background="#ffffff"
         android:orientation="horizontal"
+        app:layout_heightPercent="15%h"
+
+        app:layout_widthPercent="100%w"
 
         >
+
         <RadioGroup
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_heightPercent="30%w"
-            app:layout_widthPercent="60%w"
-            android:orientation="horizontal"
-            android:background="#ffffff"
-            android:weightSum="2"
             android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_heightPercent="30%w"
 
-            android:layout_marginLeft="20dp">
+            app:layout_widthPercent="60%w">
+
             <RadioButton
-                android:id="@+id/wechat"
+                android:id="@+id/pop_wechat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -95,8 +101,9 @@
                 android:drawableTop="@drawable/wechat"
                 android:gravity="center"
                 android:text="微信" />
+
             <RadioButton
-                android:id="@+id/moments"
+                android:id="@+id/pop_moments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -108,11 +115,12 @@
 
         </RadioGroup>
     </com.zhy.android.percent.support.PercentLinearLayout>
+
     <Button
+        android:id="@+id/pop_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:text="取  消"
         app:layout_heightPercent="17%w"
-        app:layout_widthPercent="100%w"
-        android:background="@color/background"
-        android:text="取  消"/>
+        app:layout_widthPercent="100%w" />
 </com.zhy.android.percent.support.PercentLinearLayout>

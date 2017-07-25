@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <io.vov.vitamio.widget.VideoView
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/roll_video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></io.vov.vitamio.widget.VideoView>
+        android:layout_height="match_parent"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
 </LinearLayout>
