@@ -3,7 +3,6 @@ package com.example.admin.myapplication.module.LiveChina;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +13,7 @@ import com.example.admin.myapplication.global.MyApp;
 import com.example.admin.myapplication.model.bean.LiveChinaBean;
 import com.example.admin.myapplication.module.LiveChina.livechinaFragments.LiveChinaViewPagerFragment;
 import com.example.admin.myapplication.module.person.PersonActivity;
+import com.example.admin.myapplication.utils.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
     @BindView(R.id.livechina_add)
     ImageView livechinaAdd;
     @BindView(R.id.livechina_viewpager)
-    ViewPager livechinaViewpager;
+    NoScrollViewPager livechinaViewpager;
     Unbinder unbinder;
     //TODO mHomePresenter未初始化
     private LiveChinaContract.LiveChinaViewPresenter liveChinaViewPresenter;
@@ -83,7 +83,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
 
         livechinaTablayout= (TabLayout) view.findViewById(R.id.livechina_tablayout);
         livechinaAdd= (ImageView) view.findViewById(R.id.livechina_add);
-        livechinaViewpager= (ViewPager) view.findViewById(R.id.livechina_viewpager);
+        livechinaViewpager= (NoScrollViewPager) view.findViewById(R.id.livechina_viewpager);
 
         image_person.setOnClickListener(new View.OnClickListener() {
             @Override
