@@ -32,6 +32,7 @@ public class AdapterXRecyclerView extends RecyclerView.Adapter<AdapterXRecyclerV
     private  Context context;
 
     private  List<PandaBroadBean.ListBean> list;
+    private StringBuffer replace1;
 
     public void setSetOnClickListener(SetOnClickListener setOnClickListener) {
 
@@ -82,7 +83,7 @@ public class AdapterXRecyclerView extends RecyclerView.Adapter<AdapterXRecyclerV
 
         StringBuffer stringBuffer4 = new StringBuffer(replace);
 
-        StringBuffer replace1 = stringBuffer4.replace(7, 8, "-");
+        replace1 = stringBuffer4.replace(7, 8, "-");
 
         holder.tv_time.setText(replace1);
 
@@ -124,12 +125,9 @@ public class AdapterXRecyclerView extends RecyclerView.Adapter<AdapterXRecyclerV
     public void onClick(View v) {
 
         Integer position = (Integer) v.getTag();
-
         Intent intent = new Intent(context, BroadDetailsActivity.class);
-
         intent.putExtra("url", list.get(position).getUrl());
         intent.putExtra("title", list.get(position).getTitle());
-
         StringBuffer stringBuffer = new StringBuffer(list.get(position).getUrl());
         StringBuffer delete = stringBuffer.delete(0, 23);
         StringBuffer stringBuffer2 = new StringBuffer(delete);
@@ -139,10 +137,7 @@ public class AdapterXRecyclerView extends RecyclerView.Adapter<AdapterXRecyclerV
         StringBuffer stringBuffer4 = new StringBuffer(replace);
         StringBuffer replace1 = stringBuffer4.replace(7, 8, "-");
         intent.putExtra("time",replace1.toString());
-        intent.putExtra("position",position+"");
-        intent.putExtra("image_url",list.get(position).getPicurl());
-
+        intent.putExtra("image",list.get(position).getPicurl());
         context.startActivity(intent);
-
     }
 }

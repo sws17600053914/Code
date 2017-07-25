@@ -1,6 +1,5 @@
 package com.example.admin.myapplication.module.panda_Broad;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
@@ -183,15 +182,12 @@ public class BroadFragment extends BaseFragment implements BroadContract.BroadVi
             mImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent = new Intent(getActivity(), BroadDetail_TopActivity.class);
-
                     intent.putExtra("url_top","http://vod.cntv.lxdns.com/flash/mp4video61/TMS/2017/07/20/429732b855b24e95ad208807174eb85c_h2641200000nero_aac16-1.mp4");
-
-                    intent.putExtra("title_top", pandaBroadBean.getData().getBigImg().get(0).getTitle());
-
+                    intent.putExtra("title", pandaBroadBean.getData().getBigImg().get(0).getTitle());
+                    intent.putExtra("image", pandaBroadBean.getData().getBigImg().get(0).getImage());
+                    intent.putExtra("time", pandaBroadBean.getData().getBigImg().get(0).getUrl());
                     startActivity(intent);
-
                 }
             });
     }
@@ -234,23 +230,5 @@ public class BroadFragment extends BaseFragment implements BroadContract.BroadVi
     public int getFragmentLayoutId() {
 
         return R.layout.fragment_broadpanda;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        final ProgressDialog dialog = new ProgressDialog(getActivity());
-
-        dialog.show();
-
-        Timer timer = new Timer();
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-                dialog.dismiss();
-            }
-        },2000);
     }
 }

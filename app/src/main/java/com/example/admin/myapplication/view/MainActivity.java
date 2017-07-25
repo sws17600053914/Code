@@ -3,7 +3,6 @@ package com.example.admin.myapplication.view;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import com.example.admin.myapplication.R;
@@ -13,6 +12,10 @@ import com.example.admin.myapplication.module.RollRoll_video.RollFragment;
 import com.example.admin.myapplication.module.home.HomeFragment;
 import com.example.admin.myapplication.module.panda_Broad.BroadFragment;
 import com.example.admin.myapplication.module.panda_live.PandaLiveFragment;
+import com.roger.catloadinglibrary.CatLoadingView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -26,20 +29,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BroadFragment broadFragment;
 
     private LiveChinaFragment liveChinaFragment;
+
     private RadioButton btn_home;
     private RadioButton btn_pandalive;
     private RadioButton btn_roll;
     private RadioButton btn_broad;
     private RadioButton btn_livechina;
-    private ProgressBar progressBar;
+    private CatLoadingView catLoadingView;
+    private boolean state = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        PushAgent.getInstance(this).onAppStart();
         setContentView(R.layout.activity_main);
         initView();
+        initData();
 
-}
+    }
+
+    private void initData() {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+            transaction.add(R.id.frame_layout, homeFragment);
+        } else {
+            transaction.add(R.id.frame_layout, homeFragment);
+        }
+        transaction.commit();
+
+        if (btn_home.isChecked()) {
+
+            btn_home.setBackgroundResource(R.color.huise);
+        } else {
+            btn_home.setBackgroundResource(R.color.white_fafaf8);
+        }
+    }
 
 
     @Override
@@ -92,18 +119,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         hideFragment(transaction);
+
+
         switch (v.getId()) {
             case R.id.radio_home:
-                state();
+                state(); //底部按钮的背景色
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.frame_layout, homeFragment);
                 } else {
                     transaction.show(homeFragment);
                 }
+                    dialog();//dialog的显示
                 break;
             case R.id.radio_pandalive:
-                state();
+                state();//底部按钮的背景色
                 if (pandaLiveFragment == null) {
                     pandaLiveFragment = new PandaLiveFragment();
                     transaction.add(R.id.frame_layout, pandaLiveFragment);
@@ -111,37 +141,37 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     transaction.show(pandaLiveFragment);
                 }
                 btn_pandalive.setBackgroundResource(R.color.huise);
+                dialog();//dialog的显示
                 break;
             case R.id.radio_rollrollvideo:
-                state();
+                state();//底部按钮的背景色
                 if (rollFragment == null) {
                     rollFragment = new RollFragment();
                     transaction.add(R.id.frame_layout, rollFragment);
                 } else {
                     transaction.show(rollFragment);
                 }
+                dialog();//dialog的显示
                 break;
             case R.id.radio_pandabroad:
-                state();
+                state();//底部按钮的背景色
                 if (broadFragment == null) {
-
                     broadFragment = new BroadFragment();
-
                     transaction.add(R.id.frame_layout, broadFragment);
                 } else {
                     transaction.show(broadFragment);
                 }
+                dialog();//dialog的显示
                 break;
             case R.id.radio_livechina:
-                state();
+                state();//底部按钮的背景色
                 if (liveChinaFragment == null) {
-
                     liveChinaFragment = new LiveChinaFragment();
-
                     transaction.add(R.id.frame_layout, liveChinaFragment);
                 } else {
                     transaction.show(liveChinaFragment);
                 }
+                dialog();   //dialog的显示
                 break;
         }
 
@@ -185,4 +215,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             btn_livechina.setBackgroundResource(R.color.white_fafaf8);
         }
     }
+
+    public void dialog() {
+
+        if (catLoadingView != null) {
+            catLoadingView.show(getSupportFragmentManager(), "deserve");
+            catLoadingView.setCancelable(false);
+        } else {
+            catLoadingView = new CatLoadingView();
+            catLoadingView.show(getSupportFragmentManager(), "deserve");
+            catLoadingView.setCancelable(false);
+        }
+
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                catLoadingView.dismiss();
+            }
+        }, 2000);
+    }
+
 }

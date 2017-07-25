@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,14 +22,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseActivity;
 import com.example.admin.myapplication.global.MyApp;
 import com.example.admin.myapplication.model.bean.WonderfulBean;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -108,6 +105,7 @@ public class VideoPlayActivity extends BaseActivity implements View.OnClickListe
             iv_collect.setImageResource(R.drawable.play_fullsrcee_collect);
         } else {
             iv_collect.setImageResource(R.drawable.play_fullsrcee_collect_true);
+
         }
         initVideo(urls.get(position));
         initAnim();

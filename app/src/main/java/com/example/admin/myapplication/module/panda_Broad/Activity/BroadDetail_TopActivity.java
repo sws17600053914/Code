@@ -8,7 +8,9 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.myapplication.R;
+import com.example.admin.myapplication.global.MyApp;
+import com.example.admin.myapplication.module.user.User;
+import com.example.admin.myapplication.module.user.UserDao;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -65,6 +70,9 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
     private String path;
     private LinearLayout linearLayout_qq;
     private UMShareListener umShareListener;
+    private String title = "没有数据";
+    private String time = "没有数据";
+    private String image = "没有数据";
 
 
     @Override
@@ -84,6 +92,18 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter() ;
         filter.addAction("android.media.VOLUME_CHANGED_ACTION") ;
         registerReceiver(receiver, filter);
+
+        Intent intent = getIntent();
+        path = intent.getStringExtra("url_top");
+        Log.e("deserve", "path:"+path);
+        title = intent.getStringExtra("title");
+        Log.e("deserve", "title:"+title);
+        time = intent.getStringExtra("time");
+        Log.e("deserve", "time:"+time);
+        image = intent.getStringExtra("image");
+        Log.e("deserve", "image:"+image);
+
+
 
         initView();
         initWebView_top();
@@ -273,9 +293,12 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (state_shouchang){
+                    UserDao userDao = MyApp.getUserDao();
+                    User user = new User(null,image,title,time);
+                    userDao.insert(user);
                     image_shouchang.setImageResource(R.drawable.collect_yes);
                     state_shouchang =false;
-//                    Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT).show();
+///                   Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT).show();
                     Toast toast =Toast.makeText(BroadDetail_TopActivity.this, "已收藏，请到我的收藏查看", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER,0,0);
                     toast.show();
@@ -336,8 +359,6 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         });
     }
     protected void initWebView_top() {
-        Intent intent = getIntent();
-        path = intent.getStringExtra("url_top");
         videoview_top = (VideoView) findViewById(R.id.videoview_top);
         videoview_top.setVideoURI(Uri.parse(path));
         MediaController controller = new MediaController(this);
@@ -377,4 +398,14 @@ public class BroadDetail_TopActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
 
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN){
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 }

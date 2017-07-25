@@ -2,7 +2,6 @@ package com.example.admin.myapplication.module.panda_Broad.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -18,6 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.myapplication.R;
+import com.example.admin.myapplication.global.MyApp;
+import com.example.admin.myapplication.module.user.User;
+import com.example.admin.myapplication.module.user.UserDao;
+import com.roger.catloadinglibrary.CatLoadingView;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -38,13 +41,14 @@ public class BroadDetailsActivity extends AppCompatActivity {
     private View inflate;
     private View inflate2;
     private TextView textview_broad_details;
-    private String title;
-    private String time;
-    private String url;
-    private String position,image_url;
+    private String title = "没有数据";
+    private String time = "没有数据";
+    private String url = "没有数据";
+    private String position,image = "没有数据";
     UMShareListener shareListener;
     private LinearLayout linearlayout_qq;
     private UMShareListener umShareListener;
+    private CatLoadingView catLoadingView;
 
 
     @Override
@@ -57,7 +61,7 @@ public class BroadDetailsActivity extends AppCompatActivity {
         title = intent.getStringExtra("title");
         time = intent.getStringExtra("time");
         position = intent.getStringExtra("position");
-        image_url = intent.getStringExtra("image_url");
+        image = intent.getStringExtra("image");
 
         initView();
         initWebView_down();
@@ -151,25 +155,17 @@ public class BroadDetailsActivity extends AppCompatActivity {
 
                     image_broaddetails_shouchang.setImageResource(R.drawable.collect_yes);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("Deserve.db",MODE_PRIVATE);
-                    SharedPreferences.Editor edit = sharedPreferences.edit();
-                    edit.putString("image_url"+position,image_url);
-                    edit.putString("title"+position,title);
-                    edit.putString("time"+position,time);
-                    edit.apply();
+                    UserDao userDao = MyApp.getUserDao();
 
-                    Toast.makeText(BroadDetailsActivity.this, "image_url"+image_url+title+time, Toast.LENGTH_SHORT).show();
+                    User user = new User(null,image,title,time);
+
+                    userDao.insert(user);
+
                     state = false;
 
                 }else {
                     image_broaddetails_shouchang.setImageResource(R.drawable.collect_no);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("Deserve.db",MODE_PRIVATE);
-                    SharedPreferences.Editor edit = sharedPreferences.edit();
-                    edit.putString("image_url"+position,null);
-                    edit.putString("title"+position,null);
-                    edit.putString("time"+position,null);
-                    edit.apply();
                     state = true;
                 }
             }
@@ -190,28 +186,21 @@ public class BroadDetailsActivity extends AppCompatActivity {
         shareListener = new UMShareListener() {
             @Override
             public void onStart(SHARE_MEDIA share_media) {
-
             }
-
             @Override
             public void onResult(SHARE_MEDIA share_media) {
-
             }
-
             @Override
             public void onError(SHARE_MEDIA share_media, Throwable throwable) {
 
                 Toast.makeText(BroadDetailsActivity.this, "您的手机上没有该应用", Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onCancel(SHARE_MEDIA share_media) {
 
             }
         };
-
     }
-
 
     protected void initWebView_down() {
 
@@ -222,10 +211,11 @@ public class BroadDetailsActivity extends AppCompatActivity {
         }else {
             webView.setVisibility(View.VISIBLE);
             textview_broad_details.setVisibility(View.GONE);
-            dialog = new ProgressDialog(this);
-            dialog.setMessage("正在加载.....");
 
-            dialog.show();
+            catLoadingView = new CatLoadingView();
+
+            catLoadingView.show(getSupportFragmentManager(), "deserve");
+
             WebSettings webSettings= webView.getSettings();
             webSettings.setSupportZoom(true);
             webSettings.setDisplayZoomControls(true);
@@ -254,11 +244,11 @@ public class BroadDetailsActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            dialog.dismiss();
+                            catLoadingView.dismiss();
                         }
                     });
                 }
-            },1000);
+            },2500);
         }
     }
 
@@ -270,7 +260,7 @@ public class BroadDetailsActivity extends AppCompatActivity {
         super.onDestroy();
         if (dialog != null){
 
-            dialog.cancel();
+            catLoadingView.onDestroy();
         }
     }
 

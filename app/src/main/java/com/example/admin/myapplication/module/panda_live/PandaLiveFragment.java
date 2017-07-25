@@ -1,24 +1,25 @@
 package com.example.admin.myapplication.module.panda_live;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
-
-;
 
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;
 import com.example.admin.myapplication.model.bean.LiveTitleBean;
 import com.example.admin.myapplication.module.panda_live.live.Live;
 import com.example.admin.myapplication.module.panda_live.moment.Moment;
+import com.example.admin.myapplication.module.person.PersonActivity;
 import com.example.admin.myapplication.utils.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+;
 
 
 /**
@@ -46,6 +47,14 @@ public class PandaLiveFragment extends BaseFragment implements LiveTitleContract
     protected void initView(View view) {
         vpPandalive= (NoScrollViewPager) view.findViewById(R.id.vp_pandalive);
         tabPandalive= (TabLayout) view.findViewById(R.id.tab_pandalive);
+
+        view.findViewById(R.id.image_persion_).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

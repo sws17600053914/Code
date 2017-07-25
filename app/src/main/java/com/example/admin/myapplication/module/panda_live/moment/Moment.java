@@ -3,9 +3,7 @@ package com.example.admin.myapplication.module.panda_live.moment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
-
 
 import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseFragment;

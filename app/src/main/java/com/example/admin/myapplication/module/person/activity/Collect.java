@@ -12,7 +12,6 @@ import com.example.admin.myapplication.R;
 import com.example.admin.myapplication.base.BaseActivity;
 import com.example.admin.myapplication.module.person.fragment.BestViews;
 import com.example.admin.myapplication.module.person.fragment.LiveTelecast;
-import com.example.admin.myapplication.module.person.fragment.PhoneRegister;
 import com.zhy.android.percent.support.PercentFrameLayout;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
@@ -46,14 +45,13 @@ public class Collect extends BaseActivity {
     @BindView(R.id.collect_frament)
     PercentFrameLayout collectFrament;
 
-    BestViews bestViews;
-    LiveTelecast liveTelecast;
+    BestViews bestViews = new BestViews();
+    LiveTelecast liveTelecast = new LiveTelecast();
 
     @Override
     protected void initView() {
         colletOne.setBackgroundColor(Color.parseColor("#3565a6"));
         colletTwo.setBackgroundColor(Color.parseColor("#ffffff"));
-
     }
 
     @Override
@@ -67,28 +65,14 @@ public class Collect extends BaseActivity {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.collect_frament,new PhoneRegister());
+        transaction.replace(R.id.collect_frament,new LiveTelecast());
         transaction.commit();
-    }
-
-    private void hideFragment(FragmentTransaction transaction) {
-        if (liveTelecast != null) {
-
-            transaction.hide(liveTelecast);
-        }
-        if (bestViews != null) {
-
-            transaction.hide(bestViews);
-        }
-
-
     }
 
     @OnClick({R.id.collect_back, R.id.livea, R.id.best_views})
     public void onViewClicked(View view) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        hideFragment(transaction);
         switch (view.getId()) {
             case R.id.collect_back:
                 finish();
@@ -96,30 +80,16 @@ public class Collect extends BaseActivity {
             case R.id.livea:
                 colletOne.setBackgroundColor(Color.parseColor("#3565a6"));
                 colletTwo.setBackgroundColor(Color.parseColor("#ffffff"));
-                if (liveTelecast == null) {
 
-                    liveTelecast = new LiveTelecast();
-
-                    transaction.add(R.id.collect_frament, liveTelecast);
-
-                } else {
-                    transaction.show(liveTelecast);
-                }
-
+                    transaction.replace(R.id.collect_frament, liveTelecast);
 
                 break;
             case R.id.best_views:
                 colletTwo.setBackgroundColor(Color.parseColor("#3565a6"));
                 colletOne.setBackgroundColor(Color.parseColor("#ffffff"));
-                if (bestViews == null) {
 
-                    bestViews = new BestViews();
+                    transaction.replace(R.id.collect_frament, bestViews);
 
-                    transaction.add(R.id.collect_frament, bestViews);
-
-                } else {
-                    transaction.show(bestViews);
-                }
                 break;
         }
         transaction.commit();

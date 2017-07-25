@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    greendao{
+        schemaVersion 1
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
@@ -25,6 +29,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':vitamio')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/ShareSDK-Twitter-3.0.0.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.7.0'
@@ -39,9 +48,7 @@ dependencies {
     compile 'fm.jiecao:jiecaovideoplayer:2.0'
     compile 'com.jakewharton:butterknife-annotations:8.7.0'
     testCompile 'junit:junit:4.12'
-    compile files('libs/umeng_social_net.jar')
-    compile files('libs/umeng_social_tool.jar')
-    compile files('libs/umeng_social_api.jar')
-    compile files('libs/SocialSDK_QQ_Simplify.jar')
-    compile files('libs/ShareSDK-Twitter-3.0.0.jar')
+    compile project(':catloadinglibrary')
+    compile project(':PushSDK')
+    compile 'org.greenrobot:greendao:3.1.0'
 }
