@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -132,13 +131,4 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView 
 //        unbinder.unbind();
     }
 
-    @OnClick({R.id.home_biaoti11, R.id.home_biaoti22})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.home_biaoti11:
-                break;
-            case R.id.home_biaoti22:
-                break;
-        }
-    }
 }

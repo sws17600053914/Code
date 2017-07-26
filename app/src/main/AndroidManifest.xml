@@ -113,11 +113,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <!--<meta-data-->
-            <!--android:name="UMENG_APPKEY"-->
-            <!--android:value="59772a80f43e483535001e3f">-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59772a80f43e483535001e3f">
 
-        <!--</meta-data>-->
+        </meta-data>
 
         <activity
             android:name=".module.cn.sharesdk.demo.wxapi.WXEntryActivity"
@@ -184,7 +184,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <!--消息推送-->
         <!--<meta-data-->

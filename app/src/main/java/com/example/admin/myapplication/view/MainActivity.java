@@ -50,22 +50,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initData() {
-
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (homeFragment == null) {
+
             homeFragment = new HomeFragment();
-            transaction.add(R.id.frame_layout, homeFragment);
-        } else {
-            transaction.add(R.id.frame_layout, homeFragment);
-        }
-        transaction.commit();
-
-        if (btn_home.isChecked()) {
-
+            transaction.replace(R.id.frame_layout, homeFragment);
+             transaction.commit();
             btn_home.setBackgroundResource(R.color.huise);
-        } else {
-            btn_home.setBackgroundResource(R.color.white_fafaf8);
-        }
+
     }
 
 

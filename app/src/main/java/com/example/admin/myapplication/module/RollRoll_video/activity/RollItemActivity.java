@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import io.vov.vitamio.widget.VideoView;
 
 
 /**
@@ -265,22 +264,16 @@ public class RollItemActivity extends BaseActivity implements CompoundButton.OnC
                     }
                 });
             }
-
             @Override
             public void onFaile(String msg) {
 
             }
         });
-
-
-
-
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        jcVideoPlayer.removeAllViews();
-        jcVideoPlayer.removeView(jcVideoPlayer);
+    protected void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos() ;
     }
 }

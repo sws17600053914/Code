@@ -164,8 +164,6 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
 //            }
             adapter.notifyDataSetChanged();
         }
-
-
     }
 
     @Override
